@@ -2,6 +2,7 @@
 .container {
 	position: relative;
 	margin: 0 auto;
+	font-size: 18px;
 }
 /*Search bar and search result styles*/
 .searchWrapper {
@@ -54,6 +55,24 @@
 	}
 }
 
+
+/*Style the latest news section of the FAQ page*/
+
+.latest-news p, ul {
+	padding: 1em 0.5em 0em;
+}
+
+.latest-news ul {
+	padding-left: 2em;
+}
+
+.latest-news li {
+	margin-bottom: 1em;
+}
+
+.latest-news li::marker {
+	color: black;
+}
 
 
 /*Style the content section of the FAQ page*/
