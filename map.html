@@ -11,20 +11,6 @@
 	<link href='css/headerStyle.css' rel='stylesheet' type='text/css'/>
 	
 	<!--<link href='css/map-styles.css' rel='stylesheet' type='text/css'/>-->
-	
-	<!--ion Range Slider Plugin CSS file with desired skin-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css"/>
-    
-    <!-- Link to scripts -->
-    
-    <!--jQuery-->
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    
-    <!--ion Range Slider Plugin JavaScript file-->
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
-    
-    <!-- Script with fetch data functions -->
-    <script async src="map/map-fetch-scripts.js"></script>
 </head>
 <body>
 	<header>
@@ -44,82 +30,175 @@
 		</label>
 	</header>
 	<main>
-		<section>
-			<h1 id="page-header">What do you want to see?</h2>
-			<div class="controls-container">
-				<div class="hide-show-controls">
-					<button id="footprint-button" class="footprint-button control-button">Footprints</button>
-					<button id="disinfection-button" class="disinfection-button control-button">Disinfections</button>
-					<button id="health-center-button" class="health-center-button control-button pressed health-center-pressed">Health Centers</button>
-					<!-- <button id="vaccination-hospitals-button" class="control-button pressed vaccination-pressed">Hide Vaccination Hospitals</button> -->
-				</div>
-				<!-- <div id="footprint-controls-container" class="container">
-					<div class="category-container">
-						<label class="control-label"> <img src="https://i.ibb.co/N3tfg1D/CFIW-pink-pin-72ppi-transparent.png" class="inline-legend">Footprint locations</label>
-						<div class="hide-show-controls">
-							
-						</div>
-					</div>
-				</div> -->
-				<div id="selectors-container" class="container">
-					<div id="footprint-selectors" class="category-container hidden">
-						<div class="range-slider">
-						<input type="text" class="js-range-slider" value="" />
-						</div>
-						<!-- <div class="extra-controls">
-							<input type="text" class="js-input-from js-input" value="0" />
-							<input type="text" class="js-input-to js-input" value="0" />
-						</div> -->
-					</div>
-					<div id="disinfection-selectors" class="category-container hidden">
-						<label class="control-label"><img src="https://i.ibb.co/Sv0PPNs/CFIW-purple-check-pin-72ppi-transparent.png" class="inline-legend"> Disinfection Locations
-						</label>
-						<button id="disinfect-all" class="disinfection-button">All</button>
-						<button id="disinfect-yesterday" class="disinfection-button">Yesterday</button>
-						<button id="disinfect-today" class="disinfection-button">Today</button>
-						<button id="disinfect-tomorrow" class="disinfection-button">Tomorrow</button>
-					</div>
-					<div id="health-center-selectors" class="category-container">
-						<div class="half-category">
-							<label class="control-label"> Testing Facilities
-							</label>
+		<div class="container">
+			<!-- map introduction section -->
+			<section>
+				<h2>
+					All-in-one COVID-19 map of Taichung City for English speakers
+				</h2>
+				<p>
+					Our Taichung City map shows <strong>all covid-related locations</strong> to easily find:
+				</p>
+				<ul>
+					<li>
+						Where and how to get tested or vaccinated for SARS-CoV2
+					</li>
+					<li>
+						Footprints of confirmed covid cases
+					</li>
+					<li>
+						Locations for disinfection by the Environmental Protection Bureau
+					</li>
+				</ul>
+				<p>
+					To quickly find the locations you're interested in:
+				</p>
+				<ul>
+					<li>
+						Scroll, zoom, and drag to move to an area you want to check
+					</li>	
+					<li>	
+						Use the side menu (button top left) to select location types and days	
+					</li>
+					<li>
+						Click a pin for address and appointment data, when other confirmed cases visited a footprint location, and disinfection info.
+					</li>
+					<li>
+						Check the legend below our map to understand pin colors and map functions
+					</li>
+					<li>
+						<a href="https://www.covid-taichung.com/maps/#map-instructions">Read the advanced user guide</a> if it's your first visit
+					</li>
+				</ul>
+				<p>
+					<strong>Some pins point to large areas like parks and shopping streets. Disinfection teams or confirmed cases may have visited several spots in the area around the pin.</strong>
+				</p>
+			</section>
 
-							<button id="test-english" class="health-center-button">English</button>
-							<button id="test-pregnant" class="health-center-button">Pregnancy</button>
-							<button id="test-rapid" class="health-center-button">Rapid Test</button>
-							<button id="test-pcr" class="health-center-button">PCR Test</button>
-							
-						</div>
-						<div class="half-category">
-							<label class="control-label"> Vaccination Facilities 
-							</label>
-							<button id="vac-english" class="health-center-button">English</button>
-							<button id="vac-pregnant" class="health-center-button">Pregnancy</button>
-							<button id="vac-zeneca"class="health-center-button">Astra Zeneca</button>
-							<button id="vac-moderna"class="health-center-button">Moderna</button>
-						</div>
-					</div>
-					<!-- <div id="vaccination-selectors" class="category-container">
-					</div> -->
-					<!--<div class="category-container">
-						<label class="other-control-label">Vaccination Stations</label>
-						<div class="hide-show-controls">
-							<button id="hide-vaccination-stations" class="hide-show-button">Hide</button>
-							<button id="show-vaccination-stations" class="hide-show-button">Show</button>
-						</div>
-					</div>-->
-				</div>
-			</div>
-			<div id="map"></div>
-		</section>
+			<!-- map and legend section -->
+			<section>
+				<table>
+					<tbody>
+						<tr>
+							<td>
+								<img src="https://i.ibb.co/Zmvh5K8/Google-Maps-open-menu-icon.png" alt="open-menu-icon" border="0">
+							</td>
+							<td class="info">
+								open menu to show/hide dates/types
+							</td>
+						</tr>
+					</tbody>
+				</table> 
+
+				<iframe class="map-container" src="https://www.google.com/maps/d/embed?mid=18X9JaUt12euUZQ9SP42RkJzksRCo7bWw&amp;ll=24.201530,120.64562&amp;z=11">
+				</iframe>
+				<!-- old iframe measurements:  width="720" height="400" -->
+
+				<table>
+					<tbody>
+					    <tr>
+							<td>
+								<img src="https://i.ibb.co/12DjsWm/CFIW-mint-green-health-pin.png" alt="mint-green-health-pin" border="0">
+							</td>
+							<td class="info">
+								testing/vaccination for English speakers
+							</td>
+					    </tr>
+
+					    <tr>
+							<td>
+								<img src="https://i.ibb.co/CK66g3y/CFIW-yellow-health-pin.png" alt="yellow-health-pin" border="0">
+							</td>
+							<td class="info">
+								testing/vaccination for Chinese speakers
+							</td>
+					    </tr>
+
+					    <tr>
+							<td>
+								<img src="https://i.ibb.co/N3tfg1D/CFIW-pink-pin-72ppi-transparent.png" alt="pink-foot-pin" border="0">
+							</td>
+							<td class="info">
+								confirmed case footprint
+							</td>
+					    </tr>
+
+					    <tr>
+							<td>
+								<img src="https://i.ibb.co/Sv0PPNs/CFIW-purple-check-pin-72ppi-transparent.png" alt="purple-check-pin" border="0">
+							</td>
+							<td class="info">
+								planned or completed disinfection
+							</td>
+					    </tr>
+
+					    <tr>
+							<td>
+								<img src="https://i.ibb.co/6H9nmGS/Google-Maps-social-share-icon.png" alt="social-share-icon" border="0">
+							</td>
+							<td class="info">
+								share map with friends and family
+							</td>
+					    </tr>
+
+					    <tr>
+							<td>
+								<img src="https://i.ibb.co/zJ5CKkV/Google-Maps-open-full-map-icon.png" alt="open-full-map-icon" border="0">
+							</td>
+							<td class="info">
+								open map in new window or navigation app
+							</td>
+					    </tr>
+					</tbody>
+				</table>
+			</section>
+
+			<!-- map extra details section -->
+			<section>
+				<p>
+					<strong><span class="red">
+						Important notes about the health facilities on our map:
+					</span></strong>
+				</p>
+				<ul>
+					<li>
+						<strong>Recommended means they offer certain products of services in English</strong> but it differs greatly per facility. Click on a mint-green pin to read all the details.
+					</li>
+					<li>
+						Please <strong>visit a health facility close to your location</strong>. At some facilities we found only 1 or 2 heroes that speak English and are willing to help outside of their normal duties. So be kind and respectful. Or, if you have a translator, consider the yellow pins.
+					</li>
+					<li>
+						Hospitals often cover large areas and have multiple entrances so <strong>we've tried to put our pins close to where they test or vaccinate</strong>. More info in the details.
+					</li>
+				</ul>
+			</section>
+			
+			<!-- map user guide section -->
+			<section>
+				<h2>
+					Detailed instructions for Taichung City COVID map
+				</h2>
+				
+				<!-- IMAGE GOES HERE -->
+				<p class="user-guide-image"><img src="https://www.covid-taichung.com/_files/200000020-b80a3b80a5/450/map-top-bar-options-tab.jpg"></p>
+				
+				<p>
+					Click the button in the <strong>top left corner</strong> of the map to open the sidebar. Now choose for which dates you want to show or hide locations. Scroll down for more options.
+				</p> 
+				<p>
+					When you click a pin on the map it shows extra information on the left or below on mobile devices.  You can scroll down in that menu for additional info and links.
+					
+				</p>
+
+
+				<!-- IMAGE GOES HERE -->
+				<p class="user-guide-image"><img src="https://www.covid-taichung.com/_files/200000019-97d3197d33/450/map-top-bar-translate-box-2.jpg"></p>
+
+				<p>
+					Click the button in the <strong>top right corner</strong> to open our map in a new browser window or in your Google Maps app on mobile devices. <strong>On phones you may have to switch to landscape mode to see the button</strong>.			
+				</p>
+			</section>
+		</div>
 	</main>
-
-	<script src="map/initialize-slider.js"></script>
-	<script src="map/map-functions.js"></script>
-	<script src="map/map-marker-toggles.js"></script>
-	<script 
-	    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqOe9fM_PP7kzC-cqh9IiMogQKRlNFYWQ&callback=initMap">
-	</script>
 </body>
 </html>
-

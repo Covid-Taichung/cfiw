@@ -23,6 +23,10 @@ body {
 	box-sizing: border-box;
 }
 
+/*highlight important details red*/
+.red {
+	color: #cc5a5a;
+}
 
 /* General Styles */
 
@@ -37,8 +41,6 @@ h2, h3, h4, h5, h6, p {
 .separation {
 margin-bottom:50px;
 }
-
-
 
 p a {
 color: var(--link-text);
