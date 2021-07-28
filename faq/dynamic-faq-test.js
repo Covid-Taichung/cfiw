@@ -135,16 +135,12 @@ function sortFaqContentByOrder( a, b ) {
 	}
 
 const loadFaq = async () => {
-	let url = "https://markoco14.github.io/cfiw/faq/dynamic-faq-json.json";
-	let url2 ="https://markoco14.github.io/cfiw/faq/dynamic-faq-json-2.json";
-	let url3 = "json/dynamic-faq-json-2.json"
-	let url4 = "https://github.com/markoco14/cfiw/blob/main/faqDataJSON.json"
-	let url5 = "https://markoco14.github.io/cfiw/faqDataJSON.json"
+	let url ="https://covid-taichung.github.io/cfiw/faqDataJSON.json";
 	/* url for script link
 	<script src="https://markoco14.github.io/google-sheet-test/display-data.js"></script>
 	*/
 	try {
-		const res = await fetch(url2);
+		const res = await fetch(url);
 		faqData = await res.json();
 		console.log(faqData);
 	} catch (err) {
@@ -244,7 +240,7 @@ const displayFaqContent = async () => {
 		}*/
 
 		/*set answer content and convert markdown as needed*/
-		if(faqData[i].formatAnswer) {
+		if(faqData[i].markdownAnswer) {
 			answerDiv.innerHTML = convertMarkdownToHtml(faqData, "answer");
 		} else {
 			answerDiv.innerHTML = faqData[i].answer;
@@ -274,12 +270,12 @@ function convertMarkdownToHtml(data, string) {
 	//convert markdown to html
 	if (string === "answer") {
 		var converter = new showdown.Converter(),
-		    text = faqData[i].formatAnswer,
+		    text = faqData[i].markdownAnswer,
 		    html = converter.makeHtml(text);
 		    return html
 	} else {
 		var converter = new showdown.Converter(),
-		    text = faqData[i].formatQuestion,
+		    text = faqData[i].markdownQuestion,
 		    html = converter.makeHtml(text);
 		    return html
 	}
