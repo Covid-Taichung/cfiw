@@ -1,30 +1,319 @@
 <!DOCTYPE html>
-	<head>
-		<meta charset='utf-8'>
-		<meta name='viewport' content='width=device-width initial-scale=1.0 shrink-to-fit=no'>
-		<title>Covid Footprints Information Website</title>
-		<link href='css/style.css' rel='stylesheet' type='text/css'>
-		<link href='css/headerStyle.css' rel='stylesheet' type='text/css'>
-	</head>
-	<body>
-		<header>
-			<h1 class='logo'>Covid Taichung</h1>
-			<input type='checkbox' id='nav-toggle' class='nav-toggle'>
-			<nav class='nav'>
-				<ul>
-					<li><a href='index.html'>Footprints</a></li>
-					<li><a href='map.html'>Map</a></li>
-					<li><a href='faq.html'>FAQ</a></li>
-					<li><a href='stats.html'>Stats</a></li>
-					<li><a href='contact.html'>Contact</a></li>
-				</ul>
-			</nav>
-			<label for='nav-toggle' class='nav-toggle-label'>
-				<span></span>
-			</label>
-		</header>
-		<main>
-			<h1>This is Contact.</h1>
-		</main>
-	</body>
+
+<head>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width initial-scale=1.0 shrink-to-fit=no'>
+	<title>Covid Footprints Information Website</title>
+	<link href='css/style.css' rel='stylesheet' type='text/css'>
+	<link href='css/headerStyle.css' rel='stylesheet' type='text/css'>
+	<style>
+		/* a {
+				text-decoration: none;
+			} */
+
+		.button-container {
+			display: flex;
+			justify-content: center;
+		}
+		.button {
+			width: 150px;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 8px;
+			font-family: monospace;
+			color: white;
+			background-color: rgb(57, 57, 57);
+			margin: 1em auto;
+		}
+
+		button:hover {
+			opacity: 0.8;
+			cursor: pointer;
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<h1 class='logo'>Covid Taichung</h1>
+		<input type='checkbox' id='nav-toggle' class='nav-toggle'>
+		<nav class='nav'>
+			<ul>
+				<li><a href='index.html'>Footprints</a></li>
+				<li><a href='map.html'>Map</a></li>
+				<li><a href='faq.html'>FAQ</a></li>
+				<li><a href='stats.html'>Stats</a></li>
+				<li><a href='contact.html'>Contact</a></li>
+			</ul>
+		</nav>
+		<label for='nav-toggle' class='nav-toggle-label'>
+			<span></span>
+		</label>
+	</header>
+	<main>
+		<h1 id="contact-us">Contact Us</h1>
+		<p>
+			Got any ideas, questions, or comments about this website?
+			Like to share your favorite resources to stay safe and informed during the pandemic?
+			Fill out our form and we'll get back to you.
+			If it's a great find we'll add it to our website and credit you if you like.
+		</p>
+		<p>
+			Scroll down or
+			<a href="#contact-team">
+				click here if you want to meet the superheroes behind this website.
+			</a>
+		</p>
+		<p>
+			想分享您所曉得的訊息一同幫助抗疫嗎？
+			亦或對本網站有任何想法、問題、意見，歡迎填寫我們的表格，我們將盡快與您回覆。
+			有關您提出的所有寶貴建議，我們將會列入參考，感謝您。
+			若想進一步認識網頁背後的幕後英雄，可以往下滑或
+			<a href="#contact-team">
+				點擊這裡。
+			</a>
+		</p>
+		<h2 id="contact-form">
+			Contact Form
+		</h2>
+		<p>
+			Only message is required if you prefer to stay anonymous.
+			When you want us to get back to you, please remember to leave your name, email, phone number, or chat ID?
+		</p>
+		<p>
+			若希望我們與您回應，歡迎留下您的電子郵件、電話號碼或 Line ID。如果您希望保持匿名，留下您寶貴意見即可完成，謝謝！
+		</p>
+		<form action="" method="post">
+			<fieldset>
+				<div>
+					<div>
+						<label for="field-wnd_ShortTextField_796228343">
+							<span>
+								<span>Name 姓名</span>
+							</span>
+						</label>
+						<input id="field-wnd_ShortTextField_796228343" name="wnd_ShortTextField_796228343" value=""
+							type="text" maxlength="150">
+					</div>
+					<div>
+						<label for="field-wnd_ShortTextField_737875075">
+							<span>
+								<span>Email</span>
+							</span>
+						</label>
+						<input id="field-wnd_ShortTextField_737875075" name="wnd_ShortTextField_737875075" value=""
+							type="text" maxlength="150">
+					</div>
+					<div>
+						<label for="field-wnd_ShortTextField_177896632">
+							<span>
+								<span>Phone 電話</span>
+							</span></label>
+						<input id="field-wnd_ShortTextField_177896632" name="wnd_ShortTextField_177896632" value=""
+							type="text" maxlength="150">
+					</div>
+					<div>
+						<label for="field-wnd_LongTextField_589351738"><span class="it b inline-text link">
+								<span class="it-c">Message&nbsp;留言</span>
+							</span></label>
+						<textarea rows="5" id="field-wnd_LongTextField_589351738" name="wnd_LongTextField_589351738"
+							required=""></textarea>
+					</div>
+				</div>
+			</fieldset>
+			<div class="button-container">
+				<button type="submit" name="send" value="wnd_FormBlock_15659336" class="button">
+					<span>Submit</span>
+				</button>
+			</div>
+		</form>
+		<h2 id="contact-team">Meet Our Team</h2>
+		<p>
+			We are a mix of locals and foreigners living in Taichung.
+			We don't work in healthcare but we share a deep love for Taiwan.
+			Our mission is to keep English speakers in Taichung informed with COVID-19 updates so our expat community
+			can help fight the SARS-CoV-2 virus outbreak in Taiwan and we can all keep our families and friends safe and
+			healthy.
+		</p>
+		<p>
+			We're all volunteers and we do our best to make new information quickly available to you.
+			Please let us know if you see anything out of place?
+		</p>
+		<h3>Eddy A</h3>
+		<p>
+			is a young-at-heart Belgian who loves living and working in Taiwan, sharing his passion and 💡 with the
+			world, technology, learning, fine dining, and dogs.
+			He tries to be the glue that keeps it all together but often he just sits back with a cold 🍺 and feels
+			blessed with what all these wonderful people around him have come up with now.
+		</p>
+		<h3>
+			Teresa Chuang
+		</h3>
+		<p>
+			Otherwise known as T.
+			She is our relentless driving-force, much like an energizer bunny 🔋, always cheerful and chipper.
+			Aside from (or maybe because of) that she's also an awesome connector, teacher, and facilitator who loves
+			people, biology, her country Taiwan, and life.
+			Oh and let's not forget her cute dog Mumu 😻 who is lucky enough enjoy all that energy and attention with
+			Teresa's husband Jimmy.
+		</p>
+		<h3>
+			Mark O
+		</h3>
+		<p>
+			Our tech 💻 whizz is a down-to-earth Canadian who loves creating cool technology really fast.
+			Turns out he hasn't been programming for all that long yet.
+			Hard to believe when you see the smart and creative results he spews out at an incredible pace.
+			Always working on a few projects simultaneously, when he passionately describes his newest software idea, it
+			feels like Gates and Jobs had a 👶
+		</p>
+		<h3>
+			Sophia Huang
+		</h3>
+		<p>
+			Sophia was born and raised in the US for about 10 years before coming back to Taiwan.
+			Her superpowers 🦸 are fluency in English and Chinese, team motivation, positivity, and keeping her cool
+			when everyone else (mostly Eddy) is losing track of ⌚ or goals. She loves oranges and works hard to stay fit
+			and healthy and to provide affectionate care for her father and 🐶 .
+		</p>
+		<h3>
+			Coco Hsu
+		</h3>
+		<p>
+			loves researching 🔬 to find out how to make technology better for people and prefers to do so with a can of
+			fresh coconut water in hand.
+			But that's not where her name comes from, interestingly enough.
+			Coco is smart, creative, and outgoing.
+			And she loves oranges 🟠 too. What's up with that?
+		</p>
+		<h3>
+			Ben Chuang
+		</h3>
+		<p>
+			is the smart and hardworking brother of Teresa.
+			He may appear shy and humble at first but behind the curtain he's our OCR hero and proofreader 📑 who
+			changes all the Chinese information we can find to usable formats on a daily basis, ensuring that our
+			content is as good as he is.
+			We admire his flexibility and we're happy that we can help him to further improve his English.
+			Because giving back 💚 is just as much fun as receiving.
+		</p>
+		<h3>
+			Carol Lin
+		</h3>
+		<p>
+			Our experienced UI/UX designer 🎨 from Taiwan loves to make pretty things.
+			After work Carol loves to visit concerts, events, and art galleries which shows in her own delightful and
+			original creations.
+			But what makes Carol a true super🦸 in our eyes is that all those stunning things she creates are always
+			focused on what works best for the user (UX) and in line with each project's goals and timeline.
+		</p>
+		<h3>
+			Antonio A
+		</h3>
+		<p>
+			Our newest super⭐ is from Mexico and he lives to develop open source, user-centered, pleasant-looking tools
+			and technology.
+			In short, he's our kind of guy.
+			And, much like señor Banderas, this Antonio loves movies, animation, music, and voice-overs, although I'm
+			not sure about 🐱 and 👢 though.
+			But one thing's for sure, no living soul can resist those big, brown eyes when they spark with yet another
+			amazing insight or idea. Olé!
+		</p>
+		<!-- Back to Top box perhaps ?-->
+
+		<div class="button-container">
+			<a href="#contact-us">
+				<button class="button">
+					Top
+				</button>
+			</a>
+		</div>
+		<!-- another html box-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function () {
+				$(window).scroll(function () {
+					if ($(this).scrollTop() > 100) {
+						$('#scroll').fadeIn();
+					} else {
+						$('#scroll').fadeOut();
+					}
+				});
+				$('#scroll').click(function () {
+					$("html, body").animate({ scrollTop: 0 }, 600);
+					return false;
+				});
+			});
+		</script>
+		<style type="text/css">
+			/* BackToTop button css */
+			#scroll {
+				position: fixed;
+				right: 10px;
+				bottom: 10px;
+				cursor: pointer;
+				width: 50px;
+				height: 50px;
+				background-color: #222222;
+				text-indent: -9999px;
+				display: none;
+				-webkit-border-radius: 5px;
+				-moz-border-radius: 5px;
+				border-radius: 100%;
+			}
+
+			#scroll span {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-left: -8px;
+				margin-top: -12px;
+				height: 0;
+				width: 0;
+				border: 8px solid transparent;
+				border-bottom-color: #ffffff
+			}
+
+			#scroll:hover {
+				background-color: #ff4081;
+				opacity: 1;
+				filter: "alpha(opacity=100)";
+				-ms-filter: "alpha(opacity=100)";
+			}
+		</style>
+
+		<a href="javascript:void(0);" id="scroll" title="Scroll to Top" style="display: none;">Top<span></span></a>
+		<!-- end of box -->
+	</main>
+	<footer>
+		<p>
+			<a href="https://www.covid-taichung.com/contact/#contact-team">
+				Our volunteers
+			</a>
+			💛 translate and create much of this content manually.
+			<br />
+			If you find an issue or have a great idea, please
+			<a href="https://www.covid-taichung.com/contact/#contact-form">
+				tell us
+			</a>.
+		</p>
+		<p>
+			The materials provided in this web site may be used for private purposes.
+			For use, reproduction or transmission for purposes other than private use, please contact us.
+			The content on this website was translated by volunteers, third parties, and translation software.
+			Reasonable efforts have been made in order to provide accurate translations.
+			Translations are provided as a service to users of our website, and are provided "as is."
+			No warranty of any kind, either expressed or implied, is made as to the reliability, accuracy, or
+			correctness of any translations made from the source languages into any other language.
+			Some content may not be accurately translated due to limitations of the translation software.
+			Some content has been summarized and interpreted to provide a user-friendly service.
+		</p>
+		<p>
+			Covid Taichung - Footprint and Information Website
+			©
+			2021
+		</p>
+	</footer>
+</body>
+
 </html>
