@@ -32,7 +32,34 @@ body {
 
 main {
 	padding: 0.8em; 
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 77rem;
 }
+
+@media (max-width: 299px) {
+	main {
+		padding:
+			0.875rem
+			calc(1.3125rem + 14 * ((100vw - 299px) / 299));
+	}
+}
+/* initial mobile width + a fraction of remainder */
+@media (min-width: 600px) {
+	main {
+		width: calc(600px + ((1 / 2) * (100vw - 600px)));
+	}
+}
+@media (min-width: 800px) {
+	main {
+		width: calc(700px + ((3 / 4) * (100vw - 800px)));
+	}
+}
+@media (min-width: 1000px) {
+	main {
+		width: calc(850px + (100vw - 1000px));
+	}
+ }
 
 h2, h3, h4, h5, h6, p {
 	margin-bottom: 1em;
