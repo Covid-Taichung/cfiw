@@ -7,9 +7,33 @@
 	<link href='css/style.css' rel='stylesheet' type='text/css'>
 	<link href='css/headerStyle.css' rel='stylesheet' type='text/css'>
 	<style>
-		/* a {
-				text-decoration: none;
-			} */
+		fieldset {
+			border: none;
+		}
+		input, textarea {
+			width: 100%;
+		}
+		@media screen and (min-width: 37.5em) {
+			form {
+				padding: .5rem .625rem;
+			}
+			.label-input-container {
+				display: flex;
+				margin-bottom: 1em;
+			}
+			label {
+				width: 30%;
+				text-align: right;
+				padding-right: 1em;
+			}
+			input, textarea {
+				width: 60%;
+			}
+			button[type=submit] {
+				margin: 1em auto;
+				display: block;
+			}
+		}
 
 		.button-container {
 			display: flex;
@@ -86,46 +110,39 @@
 		<form action="" method="post">
 			<fieldset>
 				<div>
-					<div>
+					<div class="label-input-container">
 						<label for="field-wnd_ShortTextField_796228343">
-							<span>
-								<span>Name 姓名</span>
-							</span>
+							Name 姓名
 						</label>
 						<input id="field-wnd_ShortTextField_796228343" name="wnd_ShortTextField_796228343" value=""
 							type="text" maxlength="150">
 					</div>
-					<div>
+					<div class="label-input-container">
 						<label for="field-wnd_ShortTextField_737875075">
-							<span>
-								<span>Email</span>
-							</span>
+							Email
 						</label>
 						<input id="field-wnd_ShortTextField_737875075" name="wnd_ShortTextField_737875075" value=""
 							type="text" maxlength="150">
 					</div>
-					<div>
+					<div class="label-input-container">
 						<label for="field-wnd_ShortTextField_177896632">
-							<span>
-								<span>Phone 電話</span>
-							</span></label>
+							Phone 電話
+						</label>
 						<input id="field-wnd_ShortTextField_177896632" name="wnd_ShortTextField_177896632" value=""
 							type="text" maxlength="150">
 					</div>
-					<div>
-						<label for="field-wnd_LongTextField_589351738"><span class="it b inline-text link">
-								<span class="it-c">Message&nbsp;留言</span>
-							</span></label>
+					<div class="label-input-container">
+						<label for="field-wnd_LongTextField_589351738">
+							Message 留言
+						</label>
 						<textarea rows="5" id="field-wnd_LongTextField_589351738" name="wnd_LongTextField_589351738"
 							required=""></textarea>
 					</div>
 				</div>
 			</fieldset>
-			<div class="button-container">
-				<button type="submit" name="send" value="wnd_FormBlock_15659336" class="button">
-					<span>Submit</span>
-				</button>
-			</div>
+			<button type="submit" name="send" value="wnd_FormBlock_15659336" class="button">
+				<span>Submit</span>
+			</button>
 		</form>
 		<h2 id="contact-team">Meet Our Team</h2>
 		<p>
