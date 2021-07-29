@@ -135,7 +135,7 @@ function sortFaqContentByOrder( a, b ) {
 	}
 
 const loadFaq = async () => {
-	let url ="https://covid-taichung.github.io/cfiw/faqDataJSON.json";
+	let url ="https://covid-taichung.github.io/cfiw/faq/faqDataJSON.json";
 	/* url for script link
 	<script src="https://markoco14.github.io/google-sheet-test/display-data.js"></script>
 	*/
