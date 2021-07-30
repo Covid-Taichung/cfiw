@@ -64,7 +64,7 @@ searchBar.addEventListener('keyup', (e) => {
 				labelYes = false;
 			}
 			//check if answers match search terms
-			if (faqData[i].answer.toLowerCase().includes(searchArray[j].toLowerCase())) {
+			if (faqData[i].markdownAnswer.toLowerCase().includes(searchArray[j].toLowerCase())) {
 				contentYes = true;
 			} else {
 				contentYes = false;
