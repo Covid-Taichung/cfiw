@@ -86,7 +86,7 @@ searchBar.addEventListener('keyup', (e) => {
 				labelYes = false;
 			}
 			//check if answers match search terms
-			if (faqData[i].answer.toLowerCase().includes(searchArray[j].toLowerCase())) {
+			if (faqData[i].markdownAnswer.toLowerCase().includes(searchArray[j].toLowerCase())) {
 				contentYes = true;
 			} else {
 				contentYes = false;
@@ -143,7 +143,8 @@ function sortFaqContentByOrder( a, b ) {
 	}
 
 const loadFaq = async () => {
-	let url ="https://covid-taichung.github.io/cfiw/faqDataJSON.json";
+
+	let url ="https://covid-taichung.github.io/cfiw/faq/faqDataJSON.json";
 
 	try {
 		const res = await fetch(url);
