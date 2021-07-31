@@ -60,20 +60,20 @@
 
 /*Style the latest news section of the FAQ page*/
 
-.latest-news p {
+
+.latest-updates p, ul {
 	padding: 0em 0.5em 0em;
 }
 
-.latest-news ul {
-	padding: 0em 0.5em 0em;
+.latest-updates ul {
 	padding-left: 2em;
 }
 
-.latest-news li {
+.latest-updates li {
 	margin-bottom: 1em;
 }
 
-.latest-news li::marker {
+.latest-updates li::marker {
 	color: black;
 }
 
