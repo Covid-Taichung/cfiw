@@ -9,6 +9,8 @@
 	margin-bottom: 1em;
 	padding: 0 0.5em;
 	width: 100%;
+	padding-bottom: 50px;
+	border-bottom: 2px solid var(--background);
 }
 
 .searchBar {
@@ -92,9 +94,10 @@
 
 .faq-question {
 	padding: 1em 0.5em;
-	border-bottom: 3px solid #393939;
+	border-bottom: 3px solid var(--background);
 	font-weight: bold;
 	margin-bottom: 1em;
+	border-radius: 1em 1em 0 0;
 }
 
 .faq-question:hover {
@@ -113,7 +116,13 @@ dt {
 }
 
 .answer-content {
+	margin-top: -1em;
+	padding-top: 1em;
+	border-left: 3px solid var(--background);
+	border-right: 3px solid var(--background);
+	border-bottom: 3px solid var(--background);
 	padding-left: 0.5em;
+	border-radius: 0 0 1em 1em;
 }
 
 .answer-content p img{
