@@ -123,6 +123,7 @@ dt {
 	border-right: 3px solid var(--background);
 	border-bottom: 3px solid var(--background);
 	padding-left: 0.5em;
+	padding-right: 0.5em;
 	border-radius: 0 0 1em 1em;
 }
 
