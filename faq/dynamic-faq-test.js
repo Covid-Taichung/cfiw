@@ -25,10 +25,10 @@ searchBar.addEventListener('keyup', (e) => {
 
 	//create the search array
 	const searchString = e.target.value.toLowerCase();
-
+	
 	//initialize filterString to filter symbols and special characters
 	let filterString = searchString;
-	
+
 	//get rid of all punctuation from the search string 
 	for (i = 0; i < dnuPunctuation.length; i++) {
 		while (filterString.includes(dnuPunctuation[i])) {
@@ -36,9 +36,16 @@ searchBar.addEventListener('keyup', (e) => {
 		}
 	}
 
-	//split the filter string into the search array
-	let searchArray = filterString.split(' ');
-	
+	let searchArray = [];
+
+	if (filterString === "") {
+		while (searchResults.firstChild) {
+			searchResults.removeChild(searchResults.firstChild);
+		}
+		return
+	} else {
+		searchArray = filterString.split(' ');
+	}	
 
 	//taking out DNU search terms now
 	let badSearchArray = [];
@@ -50,6 +57,21 @@ searchBar.addEventListener('keyup', (e) => {
 			goodSearchArray.push(searchArray[i]);
 		}
 	}
+
+	// check if first index (i = 0) holds emtpy string
+	while (goodSearchArray[0] === "") {
+		goodSearchArray.shift();
+	}
+
+	// check if last index (i = length-1) holds empty string
+	while (goodSearchArray[goodSearchArray.length-1] === "") {
+		goodSearchArray.pop();
+	}
+
+	/* 	
+		still need a way to get at the empty 
+		indexes in the middle of the array
+	*/
 
 	//set search array to good search term array
 	searchArray = goodSearchArray;
@@ -90,22 +112,8 @@ searchBar.addEventListener('keyup', (e) => {
 			} else {
 				//console.log(`question${i+1} will not be added to the search results`);
 			}	
-
-			
 		}
 	}
-
-	/*filteredFaq.sort((a,b)=>b-a);*/
-	//define function to compare the indexes of unsorted filteredFaq
-	/*function compare( a, b ) {
-	  if ( a.count < b.count ){
-	    return 1;
-	  }
-	  if ( a.count > b.count ){
-	    return -1;
-	  }
-	  return 0;
-	}*/
 
 	//sort filtered FAQ to be in descending numerical order
 	filteredFaq.sort( sortSearchResultsByCount );
@@ -135,14 +143,12 @@ function sortFaqContentByOrder( a, b ) {
 	}
 
 const loadFaq = async () => {
+
 	let url ="https://covid-taichung.github.io/cfiw/faq/faqDataJSON.json";
-	/* url for script link
-	<script src="https://markoco14.github.io/google-sheet-test/display-data.js"></script>
-	*/
+
 	try {
 		const res = await fetch(url);
 		faqData = await res.json();
-		console.log(faqData);
 	} catch (err) {
 		console.log(err);
 	}
