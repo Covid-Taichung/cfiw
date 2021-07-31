@@ -125,6 +125,10 @@ dt {
 	border-radius: 0 0 1em 1em;
 }
 
+.answer-content ul {
+	padding-top: 0em;
+}
+
 .answer-content p img{
 	width: 100%;
 	/*position: relative;
@@ -132,12 +136,22 @@ dt {
 }
 
 .answer-content li {
-	width: 85%;
+	width: 95%;
 	position: relative;
 	margin: 0 auto 1em;
 }
 
 @media screen and (min-width: 600px) {
+	.answer-content {
+		padding-left: 1em;
+	}
+
+	.answer-content li {
+		width: 90%;
+	}
+}
+
+@media screen and (min-width: 900px) {
 	.answer-content {
 		padding-left: 1em;
 	}
