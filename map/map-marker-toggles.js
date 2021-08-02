@@ -6,26 +6,25 @@ const footprintSelectors = document.getElementById('footprint-selectors');
 const disinfectionSelectors = document.getElementById('disinfection-selectors');
 const healthCenterSelectors = document.getElementById('health-center-selectors');
 
-/* create buttons to toggle footprint map markers */
+/* create buttons to show/hide footprint map markers */
 const footprintToggleButton = document.getElementById('footprint-button');
 
-/* create buttons to toggle disinfection map markers */
+/* create buttons to show/hide disinfection map markers */
 const disinfectionToggleButton = document.getElementById('disinfection-button');
 /*const disinfectionAllButton = document.getElementById('disinfect-all');*/
 const disinfectionYesterdayButton = document.getElementById('disinfect-yesterday');
 const disinfectionTodayButton = document.getElementById('disinfect-today');
 const disinfectionTomorrowButton = document.getElementById('disinfect-tomorrow');
 
-/* create buttons to toggle health facility map markers */
+/* create buttons to show/hide health facility map markers */
 const healthCenterToggleButton = document.getElementById('health-center-button');
-//Testing buttons
+/* english language and pregnancy service buttons*/
 const testEnglishButton = document.getElementById('test-english');
 const testPregnancyButton = document.getElementById('test-pregnant');
+/* covid testing service buttons */
 const testRapidButton = document.getElementById('test-rapid');
 const testPcrButton = document.getElementById('test-pcr');
-//Vaccination buttons
-const vacEnglishButton = document.getElementById('vac-english');
-const vacPregnancyButton = document.getElementById('vac-pregnant');
+/* covid vaccination service buttons */
 const vacZenecaButton = document.getElementById('vac-zeneca');
 const vacModernaButton = document.getElementById('vac-moderna');
 
@@ -301,8 +300,6 @@ healthCenterToggleButton.addEventListener('click', toggleHealthCenters)
 testPregnancyButton.addListener('click', toggle)
 testRapidButton.addListener('click', toggle)
 testPcrButton.addListener('click', toggle)
-vacEnglishButton.addListener('click', toggle)
-vacPregnancyButton.addListener('click', toggle)
 vacZenecaButton.addListener('click', toggle)
 vacModernaButton.addListener('click', toggle)*/
 /*testHospitalToggleButton.addEventListener('click', toggleTestHospitals);
