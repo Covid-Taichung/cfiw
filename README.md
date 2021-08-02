@@ -3,12 +3,12 @@ title: 'Covid-Taichung README'
 lastDateUpdated: 2021/08/02
 ---
 
-Covid-Taichung 
+Covid-Taichung.com 
 ===
 
 ## What We Do
 
-[Covid-Taichung](https://covid-taichung.com) is a volunteer, not-for-profit project with a mission to serve an English speaking public with the most up-to-date, reliable information on how Covid impacts our lives daily in this city.
+[Covid-Taichung.com](https://covid-taichung.com) is a volunteer, not-for-profit project with a mission to serve an English speaking public with the most up-to-date, reliable information on how Covid impacts our lives daily in this city.
 The core offerings of our project revolve around maps, FAQs/guides, and statistics, all rigorously maintained with the most accurate and official information.
 
 ### Maps
