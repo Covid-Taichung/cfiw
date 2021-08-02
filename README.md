@@ -1,6 +1,6 @@
 ---
 title: 'Covid-Taichung README'
-disqus: hackmd
+lastDateUpdated: 2021/08/02
 ---
 
 Covid-Taichung 
