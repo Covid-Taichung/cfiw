@@ -192,6 +192,7 @@ h2 {
 	justify-content: space-between;
 	align-items: center;
 	height: 50px;
+	width: 300px;
 }
 
 .control-label {
@@ -226,10 +227,30 @@ h2 {
 }
 
 .range-slider {
-	width: 300px;
+	width: 280px;
 }
 
+
+.irs--round .irs-from:before, .irs--round .irs-to:before, .irs--round .irs-single:before {
+    position: absolute;
+    display: block;
+    content: "";
+    bottom: -6px;
+    left: 50%;
+    width: 0;
+    height: 0;
+    margin-left: -3px;
+    overflow: hidden;
+    border: 3px solid transparent;
+    border-top-color: deeppink;
+}
+
+
 .js-range-slider {
+	color: #6242ff;
+}
+
+.irs-bar {
 	color: #6242ff;
 }
 
