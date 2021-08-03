@@ -29,8 +29,8 @@ const loadFootprints = async () => {
 
 //fetch disinfection data
 const loadDisinfections = async () => {
-			/*"https://markoco14.github.io/google-sheet-test/map-footprints-json.json"*/
-			let url = "https://markoco14.github.io/cfiw/data/disinfections.json";
+			/*"https://covid-taichung.github.io/google-sheet-test/map-footprints-json.json"*/
+			let url = "https://covid-taichung.github.io/cfiw/data/disinfections.json";
 			try {
 				const res = await fetch(url);
 				disinfectionData = await res.json();

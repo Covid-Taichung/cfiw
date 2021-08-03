@@ -25,7 +25,9 @@ let tomorrow = date.getDate()+1;
 if (tomorrow < 10) {
 	tomorrow = '0' + tomorrow;
 }
-date = year + '-' + month + '-' + today;
+let dateToday = year + '-' + month + '-' + today;
+let dateYesterday = year + '-' + month + '-' + yesterday;
+let dateTomorrow = year + '-' + month + '-' + tomorrow;
 //let url = "https://markoco14.github.io/google-sheet-test/map-footprints-json.json";
 
 //Initialize all marker arrays

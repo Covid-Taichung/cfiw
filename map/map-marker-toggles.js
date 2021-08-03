@@ -10,8 +10,7 @@ const healthCenterSelectors = document.getElementById('health-center-selectors')
 const footprintToggleButton = document.getElementById('footprint-button');
 
 /* create buttons to show/hide disinfection map markers */
-const disinfectionToggleButton = document.getElementById('disinfection-button');
-/*const disinfectionAllButton = document.getElementById('disinfect-all');*/
+const disinfectionControlsToggle = document.getElementById('disinfection-button');
 const disinfectionYesterdayButton = document.getElementById('disinfect-yesterday');
 const disinfectionTodayButton = document.getElementById('disinfect-today');
 const disinfectionTomorrowButton = document.getElementById('disinfect-tomorrow');
@@ -42,11 +41,11 @@ const vaccinationSelectors = document.getElementById('vaccination-selectors');
 //create variables to track active/inactive state
 let footprintMarkersActive = false;
 
-let disinfectionMarkersActive = false;
-/*let disinfectAllActive = false;*/
-let disinfectYesterdayActive = false;
-let disinfectTodayActive = false;
-let disinfectTomorrowActive = false;
+let disinfectionsNeverActivated = true;
+let disinfectionControlsActive = false;
+let showYesterdaysDisinfections = false;
+let showTodaysDisinfections = true;
+let showTomorrowsDisinfections = false;
 
 
 let healthCenterMarkersActive = true;
@@ -86,153 +85,149 @@ let toggleFootprints = function() {
 	}
 }
 
+
 //eventually this needs to check if yesterday/today/tomorrow are open and just re-open
-let toggleDisinfections = function () {
-	if (!disinfectionMarkersActive) {
-		showDisinfectionMarkers()
-		//disinfectionToggleButton.textContent = "Hide disinfections";
-		disinfectionMarkersActive = true;
-		disinfectionToggleButton.classList.add("pressed", "disinfection-pressed")
-
-		disinfectAllActive = true;
-/*		disinfectionAllButton.classList.add("pressed", "disinfection-pressed")*/
+// check if disinfection markers are active
+// if inactive, change to active
+// display today's disinfections
+// and set todays markers to active
+let toggleDisinfectionsControls = function () {
+	// Option 1: activating controls for the first time
+	// check if the disinfection controls are activated
+	// and if it's the first time
+	// show marker controls on GUI
+	// and only display today's disinfections
+	if (!disinfectionControlsActive && disinfectionsNeverActivated) {
+		console.log("Activating disinfection controls for the first time.")
+		for (i = 0; i < disinfectionData.length; i++) {
+				if (disinfectionData[i].date === dateToday) {
+					disinfectionMarkers[i].setMap(map);
+				} 
+		}
+		disinfectionsNeverActivated = false;
+		disinfectionControlsActive = true;
+		showTodaysDisinfections = true;
+		disinfectionControlsToggle.classList.add("pressed", "disinfection-pressed");
+		disinfectionTodayButton.classList.add("pressed", "disinfection-pressed");
 		disinfectionSelectors.style.display = 'block';
-	} else {
-		hideDisinfectionMarkers()
-		//disinfectionToggleButton.textContent = "Show disinfections";
-		disinfectionMarkersActive = false;
-		/*disinfectAllActive = false;
-		disinfectYesterdayActive = false;
-		disinfectTodayActive = false;
-		disinfectTomorrowActive = false;*/
-		disinfectionToggleButton.classList.remove("pressed", "disinfection-pressed")
+	} 
+
+	// Option 2: Activating controls but not the first time
+	// check if the disinfections are activated
+	// show marker controls on GUI
+	// and remember settings if it is not the first time
+	// and display all activated disinfections
+	else if (!disinfectionControlsActive) {
+		console.log("Activating disinfection controls but it is not the first time.")
+		// check if yesterday was set to show before controls were hidden
+		if (showYesterdaysDisinfections) {
+			for (i = 0; i < disinfectionData.length; i++) {
+				if (disinfectionData[i].date === dateYesterday) {
+					disinfectionMarkers[i].setMap(map);
+				}
+			} 
+		}
+		
+		// check if today was set to show before controls were hidden
+		if (showTodaysDisinfections) {
+			for (i = 0; i < disinfectionData.length; i++) {
+				if (disinfectionData[i].date === dateToday) {
+					disinfectionMarkers[i].setMap(map);
+				} 
+			}
+		}
+
+		// check if tomorrow was set to show before controls were hidden
+		if (showTomorrowsDisinfections) {
+			for (i = 0; i < disinfectionData.length; i++) {
+				if (disinfectionData[i].date === dateTomorrow) {
+					disinfectionMarkers[i].setMap(map);
+				} 
+			}
+		}
+
+		// change show disinfection controls state to true
+		// change styles to pressed and visible
+		disinfectionControlsActive = true;
+		disinfectionControlsToggle.classList.add("pressed", "disinfection-pressed")
+		disinfectionSelectors.style.display = 'block';
+	} 
+
+	// Option 3: deactivating controls
+	// remove all markers from the map
+	// but do not change state of show/do not show markers
+	// hide marker controls from GUI
+	else {
+		console.log("Deactivating disinfection controls");
+		for (i = 0; i < disinfectionData.length; i++) {
+			disinfectionMarkers[i].setMap(null);
+		}
+		// change show disinfection controls state to false
+		// change styles to not pressed and hidden
+		disinfectionControlsActive = false;
+		disinfectionControlsToggle.classList.remove("pressed", "disinfection-pressed")
 		disinfectionSelectors.style.display = 'none';
-
-		//reset disinfection selectors
-		disinfectYesterdayActive = false;
-		disinfectionYesterdayButton.classList.remove("pressed", "disinfection-pressed");
 	}
 }
-
-/* I need a check that will see if any of yesterday, today, and tomorrow are active
-=> if they are active, then only those data sets should show up.
-*/
-
-let toggleAll = function() {
-	console.log('filter all worked')
-	if (!disinfectAllActive) {
-		disinfectAllActive = true;
-		disinfectYesterdayActive = true;
-		disinfectTodayActive = true;
-		disinfectTomorrowActive = true;
-/*		disinfectionAllButton.classList.add("pressed", "disinfection-pressed")*/
-		toggleYesterday();
-		toggleToday();
-		toggleTomorrow();
-		showDisinfectionMarkers()
-	} else {
-		hideDisinfectionMarkers()
-		disinfectAllActive = false;
-/*		disinfectionAllButton.classList.remove("pressed", "disinfection-pressed")*/
-		console.log(disinfectAllActive)
-
-	}
-}
-
-
 
 let toggleYesterday = function() {
-	console.log('yesterday worked')
-	if (!disinfectYesterdayActive) {
-		hideDisinfectionMarkers()
-		for (i = 0; i < disinfectionData.length; i++) {
-			console.log(disinfectionData[i].date)
-			if (disinfectionData[i].date === year + '-' + month + '-' + yesterday) {
-				disinfectionMarkers[i].setMap(map);
-			} /*else {
-				disinfectionMarkers[i].setMap(null);
-			}*/
-		}
-		disinfectYesterdayActive = true;
+	if (!showYesterdaysDisinfections) {
+		showYesterdaysDisinfections = true;
 		disinfectionYesterdayButton.classList.add("pressed", "disinfection-pressed")
-		//turn off All button
-		disinfectAllActive = false;
-/*		disinfectionAllButton.classList.remove("pressed", "disinfection-pressed")*/
-	} else {
 		for (i = 0; i < disinfectionData.length; i++) {
-			console.log(disinfectionData[i].date)
-			if (disinfectionData[i].date === year + '-' + month + '-' + yesterday) {
-				disinfectionMarkers[i].setMap(null);
-			} /*else {
-				disinfectionMarkers[i].setMap(null);
-			}*/
+			if (disinfectionData[i].date === dateYesterday) {
+				disinfectionMarkers[i].setMap(map);
+			} 
 		}
-		disinfectYesterdayActive = false;
-		disinfectionYesterdayButton.classList.remove("pressed", "disinfection-pressed");
+	} else {
+		showYesterdaysDisinfections = false;
+		disinfectionYesterdayButton.classList.remove("pressed", "disinfection-pressed")
+		for (i = 0; i < disinfectionData.length; i++) {
+			if (disinfectionData[i].date === dateYesterday) {
+				disinfectionMarkers[i].setMap(null);
+			} 
+		}
 	}
 }
 
 let toggleToday = function() {
-	console.log('today worked')
-	if (!disinfectTodayActive) {
-		hideDisinfectionMarkers()
-		for (i = 0; i < disinfectionData.length; i++) {
-			console.log(disinfectionData[i].date)
-			if (disinfectionData[i].date === year + '-' + month + '-' + today) {
-				disinfectionMarkers[i].setMap(map);
-			} /*else {
-				disinfectionMarkers[i].setMap(null);
-			}*/
-		}
-		disinfectTodayActive = true;
+	if (!showTodaysDisinfections) {
+		showTodaysDisinfections = true;
 		disinfectionTodayButton.classList.add("pressed", "disinfection-pressed")
-		//turn off All button
-		disinfectAllActive = false;
-/*		disinfectionAllButton.classList.remove("pressed", "disinfection-pressed")*/
-	} else {
 		for (i = 0; i < disinfectionData.length; i++) {
-			console.log(disinfectionData[i].date)
-			if (disinfectionData[i].date === year + '-' + month + '-' + today) {
-				disinfectionMarkers[i].setMap(null);
-			} /*else {
-				disinfectionMarkers[i].setMap(null);
-			}*/
+			if (disinfectionData[i].date === dateToday) {
+				disinfectionMarkers[i].setMap(map);
+			} 
 		}
-		disinfectTodayActive = false;
+	} else {
+		showTodaysDisinfections = false;
 		disinfectionTodayButton.classList.remove("pressed", "disinfection-pressed")
+		for (i = 0; i < disinfectionData.length; i++) {
+			if (disinfectionData[i].date === dateToday) {
+				disinfectionMarkers[i].setMap(null);
+			} 
+		}
 	}
-
 }
 
 let toggleTomorrow = function() {
-	if (!disinfectTomorrowActive) {
-		hideDisinfectionMarkers()
-		for (i = 0; i < disinfectionData.length; i++) {
-			console.log(disinfectionData[i].date)
-			if (disinfectionData[i].date === year + '-' + month + '-' + tomorrow) {
-				disinfectionMarkers[i].setMap(map);
-			} /*else {
-				disinfectionMarkers[i].setMap(null);
-			}*/
-		}
-		disinfectTomorrowActive = true;
+	if (!showTomorrowsDisinfections) {
+		showTomorrowsDisinfections = true;
 		disinfectionTomorrowButton.classList.add("pressed", "disinfection-pressed")
-		//turn off All button
-		disinfectAllActive = false;
-/*		disinfectionAllButton.classList.remove("pressed", "disinfection-pressed")*/
-	} else {
 		for (i = 0; i < disinfectionData.length; i++) {
-			console.log(disinfectionData[i].date)
-			if (disinfectionData[i].date === year + '-' + month + '-' + tomorrow) {
-				disinfectionMarkers[i].setMap(null);
-			} /*else {
-				disinfectionMarkers[i].setMap(null);
-			}*/
+			if (disinfectionData[i].date === dateTomorrow) {
+				disinfectionMarkers[i].setMap(map);
+			} 
 		}
-		disinfectTomorrowActive = false;
+	} else {
+		showTomorrowsDisinfections = false;
 		disinfectionTomorrowButton.classList.remove("pressed", "disinfection-pressed")
+		for (i = 0; i < disinfectionData.length; i++) {
+			if (disinfectionData[i].date === dateTomorrow) {
+				disinfectionMarkers[i].setMap(null);
+			} 
+		}
 	}
-	console.log("tomorrow worked")
 }
 
 let toggleHealthCenters = function() {
@@ -287,8 +282,7 @@ let toggleVaccinationHospitals = function() {
 footprintToggleButton.addEventListener('click', toggleFootprints);
 
 
-disinfectionToggleButton.addEventListener('click', toggleDisinfections)
-/*disinfectionAllButton.addEventListener('click', toggleAll)*/
+disinfectionControlsToggle.addEventListener('click', toggleDisinfectionsControls)
 disinfectionYesterdayButton.addEventListener('click', toggleYesterday)
 disinfectionTodayButton.addEventListener('click', toggleToday)
 disinfectionTomorrowButton.addEventListener('click', toggleTomorrow)
