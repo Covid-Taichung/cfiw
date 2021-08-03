@@ -1,28 +1,30 @@
 //a js file
 /* SECTION FOR TOGGLE BUTTON FUNCTIONALITY */
 
-//create references to all toggle buttons
+/* create references to map control containers */
+const footprintSelectors = document.getElementById('footprint-selectors');
+const disinfectionSelectors = document.getElementById('disinfection-selectors');
+const healthCenterSelectors = document.getElementById('health-center-selectors');
+
+/* create buttons to show/hide footprint map markers */
 const footprintToggleButton = document.getElementById('footprint-button');
 
-
-
-
+/* create buttons to show/hide disinfection map markers */
 const disinfectionToggleButton = document.getElementById('disinfection-button');
-const disinfectionAllButton = document.getElementById('disinfect-all');
+/*const disinfectionAllButton = document.getElementById('disinfect-all');*/
 const disinfectionYesterdayButton = document.getElementById('disinfect-yesterday');
 const disinfectionTodayButton = document.getElementById('disinfect-today');
 const disinfectionTomorrowButton = document.getElementById('disinfect-tomorrow');
 
-
+/* create buttons to show/hide health facility map markers */
 const healthCenterToggleButton = document.getElementById('health-center-button');
-//Testing buttons
+/* english language and pregnancy service buttons*/
 const testEnglishButton = document.getElementById('test-english');
 const testPregnancyButton = document.getElementById('test-pregnant');
+/* covid testing service buttons */
 const testRapidButton = document.getElementById('test-rapid');
 const testPcrButton = document.getElementById('test-pcr');
-//Vaccination buttons
-const vacEnglishButton = document.getElementById('vac-english');
-const vacPregnancyButton = document.getElementById('vac-pregnant');
+/* covid vaccination service buttons */
 const vacZenecaButton = document.getElementById('vac-zeneca');
 const vacModernaButton = document.getElementById('vac-moderna');
 
@@ -31,9 +33,6 @@ const vacModernaButton = document.getElementById('vac-moderna');
 const vaccinationHospitalToggleButton = document.getElementById('vaccination-hospitals-button');
 */
 
-const footprintSelectors = document.getElementById('footprint-selectors');
-const disinfectionSelectors = document.getElementById('disinfection-selectors');
-const healthCenterSelectors = document.getElementById('health-center-selectors');
 /*const testingSelectors = document.getElementById('testing-selectors');
 const vaccinationSelectors = document.getElementById('vaccination-selectors');
 */
@@ -44,7 +43,7 @@ const vaccinationSelectors = document.getElementById('vaccination-selectors');
 let footprintMarkersActive = false;
 
 let disinfectionMarkersActive = false;
-let disinfectAllActive = false;
+/*let disinfectAllActive = false;*/
 let disinfectYesterdayActive = false;
 let disinfectTodayActive = false;
 let disinfectTomorrowActive = false;
@@ -96,7 +95,7 @@ let toggleDisinfections = function () {
 		disinfectionToggleButton.classList.add("pressed", "disinfection-pressed")
 
 		disinfectAllActive = true;
-		disinfectionAllButton.classList.add("pressed", "disinfection-pressed")
+/*		disinfectionAllButton.classList.add("pressed", "disinfection-pressed")*/
 		disinfectionSelectors.style.display = 'block';
 	} else {
 		hideDisinfectionMarkers()
@@ -126,7 +125,7 @@ let toggleAll = function() {
 		disinfectYesterdayActive = true;
 		disinfectTodayActive = true;
 		disinfectTomorrowActive = true;
-		disinfectionAllButton.classList.add("pressed", "disinfection-pressed")
+/*		disinfectionAllButton.classList.add("pressed", "disinfection-pressed")*/
 		toggleYesterday();
 		toggleToday();
 		toggleTomorrow();
@@ -134,7 +133,7 @@ let toggleAll = function() {
 	} else {
 		hideDisinfectionMarkers()
 		disinfectAllActive = false;
-		disinfectionAllButton.classList.remove("pressed", "disinfection-pressed")
+/*		disinfectionAllButton.classList.remove("pressed", "disinfection-pressed")*/
 		console.log(disinfectAllActive)
 
 	}
@@ -158,7 +157,7 @@ let toggleYesterday = function() {
 		disinfectionYesterdayButton.classList.add("pressed", "disinfection-pressed")
 		//turn off All button
 		disinfectAllActive = false;
-		disinfectionAllButton.classList.remove("pressed", "disinfection-pressed")
+/*		disinfectionAllButton.classList.remove("pressed", "disinfection-pressed")*/
 	} else {
 		for (i = 0; i < disinfectionData.length; i++) {
 			console.log(disinfectionData[i].date)
@@ -189,7 +188,7 @@ let toggleToday = function() {
 		disinfectionTodayButton.classList.add("pressed", "disinfection-pressed")
 		//turn off All button
 		disinfectAllActive = false;
-		disinfectionAllButton.classList.remove("pressed", "disinfection-pressed")
+/*		disinfectionAllButton.classList.remove("pressed", "disinfection-pressed")*/
 	} else {
 		for (i = 0; i < disinfectionData.length; i++) {
 			console.log(disinfectionData[i].date)
@@ -220,7 +219,7 @@ let toggleTomorrow = function() {
 		disinfectionTomorrowButton.classList.add("pressed", "disinfection-pressed")
 		//turn off All button
 		disinfectAllActive = false;
-		disinfectionAllButton.classList.remove("pressed", "disinfection-pressed")
+/*		disinfectionAllButton.classList.remove("pressed", "disinfection-pressed")*/
 	} else {
 		for (i = 0; i < disinfectionData.length; i++) {
 			console.log(disinfectionData[i].date)
@@ -289,7 +288,7 @@ footprintToggleButton.addEventListener('click', toggleFootprints);
 
 
 disinfectionToggleButton.addEventListener('click', toggleDisinfections)
-disinfectionAllButton.addEventListener('click', toggleAll)
+/*disinfectionAllButton.addEventListener('click', toggleAll)*/
 disinfectionYesterdayButton.addEventListener('click', toggleYesterday)
 disinfectionTodayButton.addEventListener('click', toggleToday)
 disinfectionTomorrowButton.addEventListener('click', toggleTomorrow)
@@ -301,8 +300,6 @@ healthCenterToggleButton.addEventListener('click', toggleHealthCenters)
 testPregnancyButton.addListener('click', toggle)
 testRapidButton.addListener('click', toggle)
 testPcrButton.addListener('click', toggle)
-vacEnglishButton.addListener('click', toggle)
-vacPregnancyButton.addListener('click', toggle)
 vacZenecaButton.addListener('click', toggle)
 vacModernaButton.addListener('click', toggle)*/
 /*testHospitalToggleButton.addEventListener('click', toggleTestHospitals);

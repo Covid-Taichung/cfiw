@@ -7,7 +7,11 @@
             //and in that push all unique date values
             //so I'd get a new array, with hopefully one index
             //for each date value. let's try..
-        
+        let sliderBar;
+        let sliderHandles = [];
+        let sliderFrom;
+        let sliderTo;
+        let sliderTags;
         
         function initializeSlider() {
 
@@ -84,5 +88,21 @@
                     to: val
                 });
             });
+
+            sliderBar = document.querySelector('.irs-bar')
+            sliderBar.style.backgroundColor = "#ff4081";
+
+            sliderHandles = document.querySelectorAll('.irs-handle');
+            sliderHandles.forEach(handle => {handle.style.border = "5px solid #ff4081"});
+            
+            sliderFrom = document.querySelector('.irs-from'); 
+            sliderFrom.style.backgroundColor = "#ff4081"; 
+
+            sliderTo = document.querySelector('.irs-to'); 
+            sliderTo.style.backgroundColor = "#ff4081"; 
+
+            sliderTags = document.querySelector('.irs-single'); 
+            sliderTags.style.backgroundColor = "#ff4081";  
+
         }   
         
