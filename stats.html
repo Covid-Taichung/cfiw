@@ -272,6 +272,66 @@
 				2021
 			</p>
 		</footer>
+
+
+<!-- Beginning of Scroll to Top Button -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $(window).scroll(function(){
+        if($(this).scrollTop() > 100){
+            $('#scroll').fadeIn();
+        }else{
+            $('#scroll').fadeOut();
+        }
+    });
+    $('#scroll').click(function(){
+        $("html, body").animate({ scrollTop: 0 }, 600);
+        return false;
+    });
+});
+</script>
+<style type="text/css">
+/* BackToTop button css */
+#scroll {
+    position:fixed;
+    right:10px;
+    bottom:10px;
+    cursor:pointer;
+    width:50px;
+    height:50px;
+    background-color:#222222;
+    text-indent:-9999px;
+    display:none;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:100%;
+}
+#scroll span {
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin-left:-8px;
+    margin-top:-12px;
+    height:0;
+    width:0;
+    border:8px solid transparent;
+    border-bottom-color:#ffffff
+}
+
+#scroll:hover {
+    background-color:#ff4081;
+    opacity:1;
+    filter:"alpha(opacity=100)";
+    -ms-filter:"alpha(opacity=100)";
+}
+
+
+</style>
+ 
+<a href="javascript:void(0);" id="scroll" title="Scroll to Top" style="display: none;">Top<span></span></a>
+<!-- End of Scroll To Top -->
+
 		<script src="https://form.jotform.com/static/feedback2.js" type="text/javascript">
 			new JotformFeedback({ formId: "211820963299059", buttonText: "Feedback", base: "https://form.jotform.com/", background: "#FF4081", fontColor: "#FFFFFF", buttonSide: "left", buttonAlign: "bottom", type: 0, width: 700, height: 500, isCardForm: false });
 		</script>
