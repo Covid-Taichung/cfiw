@@ -9,6 +9,9 @@
 		<style>
 
 	.cases-container{
+		--infections: #e2814e; 
+		--deaths: #cc5a5a; 
+		--recovered: #06a48d; 
 		display:flex;
 		flex-wrap:wrap;
 		justify-content:center;
@@ -19,16 +22,16 @@
 		border-radius:1em;
 		padding: 2em;
 		min-width:18em;
-	}
+		}
 	.cases-item {
 		margin: 2em;
 		border-width: 0 0.2em;
 		border-style: solid;
 	}
 
-	.cases-item:nth-of-type(1) { border-color: #e2814e; }
-	.cases-item:nth-of-type(2) { border-color: #cc5a5a; }
-	.cases-item:nth-of-type(3) { border-color: #06a48d; }
+	.cases-item:nth-of-type(1) { border-color: var(--infections); }
+	.cases-item:nth-of-type(2) { border-color: var(--deaths); }
+	.cases-item:nth-of-type(3) { border-color: var(--recovered); }
 
 	.cases-item > div {
 		text-align: center;
@@ -39,9 +42,9 @@
 
 	.newToday, .total { font-weight: bold; }
 	.total { font-size: 1.33em; }
-	.infections { color: #e2814e; }
-	.deaths { color: #cc5a5a; }
-	.recovered { color:#06a48d; }
+	.infections { color: var(--infections);}
+	.deaths { color: var(--deaths); }
+	.recovered { color: var(--recovered); }
 
 	/* BackToTop button css */
 			#scroll {
@@ -269,6 +272,9 @@
 				2021
 			</p>
 		</footer>
+		<script src="https://form.jotform.com/static/feedback2.js" type="text/javascript">
+			new JotformFeedback({ formId: "211820963299059", buttonText: "Feedback", base: "https://form.jotform.com/", background: "#FF4081", fontColor: "#FFFFFF", buttonSide: "left", buttonAlign: "bottom", type: 0, width: 700, height: 500, isCardForm: false });
+		</script>
 	</body>
 
 </html>
