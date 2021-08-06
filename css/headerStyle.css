@@ -10,6 +10,7 @@ header {
 .logo {
 	line-height:80px;
 	color:var(--light-text);
+	font-size: 2em;
 }
 
 .logo-img {
