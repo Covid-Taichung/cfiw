@@ -557,15 +557,14 @@
   <!-- Load our React component. -->
   <script type="text/babel">
   
-  function Footprints() {
-  return(
-  		  <a href="">
+  const Footprints = () => (
+                  <a href="#">
                     <button>
 		    Taichung Footprint <br>
 		    Date
 		    </button>
                   </a>
-		  )}
+		  )
   
 		ReactDOM.render(
                   <Footprints />,
