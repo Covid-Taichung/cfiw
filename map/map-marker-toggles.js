@@ -62,6 +62,10 @@ because it's the only one that requires code
 beyond the normal show/hide marker functions
 */
 
+/*
+	functions for footprint filters
+*/
+
 let toggleFootprints = function() {
 	if (!footprintMarkersInitialized) {
 		footprintMarkersInitialized = true;
@@ -85,6 +89,9 @@ let toggleFootprints = function() {
 	}
 }
 
+/*
+	functions for disinfection location filters
+*/
 
 //eventually this needs to check if yesterday/today/tomorrow are open and just re-open
 // check if disinfection markers are active
@@ -230,6 +237,10 @@ let toggleTomorrow = function() {
 	}
 }
 
+/*
+	functions for health facility filters
+*/
+
 let toggleHealthCenters = function() {
 	if (!healthCenterMarkersActive) {
 		showHealthCenterMarkers()
@@ -290,6 +301,11 @@ disinfectionTomorrowButton.addEventListener('click', toggleTomorrow)
 
 
 healthCenterToggleButton.addEventListener('click', toggleHealthCenters)
+
+
+
+
+
 /*testEnglishButton.addListener('click', toggle)
 testPregnancyButton.addListener('click', toggle)
 testRapidButton.addListener('click', toggle)
