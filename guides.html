@@ -10,6 +10,34 @@
 
     <style>
 
+        .pdf-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .pdf-button > a {
+            display: block;
+            color: white;
+            background-color: var(--background);
+            padding: 0.8em;
+            border-radius: 3em 1em 1em 3em;
+            text-decoration: none;
+        }
+        .pdf-button > a > span:nth-of-type(1) > img {
+            vertical-align: middle;
+            background-color: white;
+            border: 1px solid green;
+            border-radius: 2em 1em 1em 2em;
+            padding: 0.8em;
+            height: 5em;
+            width: 5em;
+        }
+        .pdf-button > a > span:nth-of-type(2) {
+            display: inline-block;
+            margin-left: 0.66em;
+            text-align: center;
+        }
+
     </style>
 </head>
 
@@ -48,15 +76,33 @@
             </a>
             or at health centers, pharmacies, or convenience stores.
         </p>
-        <a class="" href="assets/guides/COVID19 vaccination guide for 1922.gov.tw v1.5-min.pdf" target="_blank">
-			<span class="">COVID19 vaccination guide for 1922.gov.tw v1.5</span>
-		</a>
+        <div class="pdf-button">
+            <a href="assets/guides/COVID19 vaccination guide for 1922.gov.tw v1.5-min.pdf" target="_blank">
+                <span>
+                    <img
+                        src="assets/guides/download-pdf.svg"
+                        width="64px"
+                        height="64px"
+                        alt="">
+                </span>
+                <span class="">COVID19 vaccination guide for 1922.gov.tw v1.5</span>
+            </a>
+        </div>
         <p>
             Application Form for Out-of-Pocket Polymerase Chain Reaction (PCR) Testing for Coronavirus Disease in English. Required for PCR tests as well as NHI card, ID, and other documents that support your reason for taking the test like your e-ticket if you plan to go abroad.
         </p>
-        <a class="" href="assets/guides/Application Form for Out-of-Pocket Polymerase Chain Reaction  (PCR) Testing for Coronavirus Disease 2019 (COVID-19) 110615-min.pdf" target="_blank">
-			<span class="">Application Form for PCR Testing v1100615</span>
-		</a>
+        <div class="pdf-button">
+            <a href="assets/guides/Application Form for Out-of-Pocket Polymerase Chain Reaction  (PCR) Testing for Coronavirus Disease 2019 (COVID-19) 110615-min.pdf" target="_blank">
+                <span>
+                    <img
+                        src="assets/guides/download-pdf.svg"
+                        width="64px"
+                        height="64px"
+                        alt="">
+                </span>
+                <span class="">Application Form for PCR Testing v1100615</span>
+            </a>
+        </div>
     </main>
 
     <footer>
