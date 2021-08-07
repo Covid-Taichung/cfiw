@@ -2,6 +2,10 @@
 .container {
 	position: relative;
 	margin: 0 auto;
+	
+}
+
+.container p, li, dt {
 	font-size: 18px;
 }
 /*Search bar and search result styles*/
