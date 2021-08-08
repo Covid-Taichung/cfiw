@@ -1,0 +1,48 @@
+
+fieldset {
+    border: none;
+}
+input, textarea {
+    width: 100%;
+}
+@media screen and (min-width: 37.5em) {
+    form {
+        padding: .5rem .625rem;
+    }
+    .label-input-container {
+        display: flex;
+        margin-bottom: 1em;
+    }
+    label {
+        width: 30%;
+        text-align: right;
+        padding-right: 1em;
+    }
+    input, textarea {
+        width: 60%;
+    }
+    button[type=submit] {
+        margin: 1em auto;
+        display: block;
+    }
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+.button {
+    width: 150px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-family: monospace;
+    color: white;
+    background-color: rgb(57, 57, 57);
+    margin: 1em auto;
+}
+
+button:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}

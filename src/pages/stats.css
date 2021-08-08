@@ -1,0 +1,73 @@
+
+.cases-container{
+    --infections: #e2814e; 
+    --deaths: #cc5a5a; 
+    --recovered: #06a48d; 
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+.cases-section {
+    background-color:rgb(245,245,245);
+    margin:0.8em;
+    border-radius:1em;
+    padding: 2em;
+    min-width:18em;
+    }
+.cases-item {
+    margin: 2em;
+    border-width: 0 0.2em;
+    border-style: solid;
+}
+
+.cases-item:nth-of-type(1) { border-color: var(--infections); }
+.cases-item:nth-of-type(2) { border-color: var(--deaths); }
+.cases-item:nth-of-type(3) { border-color: var(--recovered); }
+
+.cases-item > div {
+    text-align: center;
+    margin: 1em;
+}
+
+.cases-heading{ text-align: center; }
+
+.newToday, .total { font-weight: bold; }
+.total { font-size: 1.33em; }
+.infections { color: var(--infections);}
+.deaths { color: var(--deaths); }
+.recovered { color: var(--recovered); }
+
+/* BackToTop button css */
+    #scroll {
+        position: fixed;
+        right: 10px;
+        bottom: 10px;
+        cursor: pointer;
+        width: 50px;
+        height: 50px;
+        background-color: #222222;
+        text-indent: -9999px;
+        display: none;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 100%;
+    }
+
+    #scroll span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -8px;
+        margin-top: -12px;
+        height: 0;
+        width: 0;
+        border: 8px solid transparent;
+        border-bottom-color: #ffffff
+    }
+
+    #scroll:hover {
+        background-color: #ff4081;
+        opacity: 1;
+        filter: "alpha(opacity=100)";
+        -ms-filter: "alpha(opacity=100)";
+    }

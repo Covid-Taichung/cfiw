@@ -1,6 +1,4 @@
 
-/* New Cases */
-
 .New-Cases {
     font-size: 1rem;
     text-align: center;
@@ -110,4 +108,7 @@
     margin-bottom: 0.5em;
     text-align: center;
     line-height:1.6;
+}
+.New-Cases svg {
+    width: 4em;
 }

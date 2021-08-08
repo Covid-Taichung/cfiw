@@ -1,0 +1,177 @@
+/*Container holds search bar, search results, and FAQ content*/
+header li {
+	font-size: 16px;
+}
+
+.container {
+	position: relative;
+	margin: 0 auto;
+	
+}
+
+.container p, li, dt {
+	font-size: 18px;
+}
+/*Search bar and search result styles*/
+.searchWrapper {
+	margin-bottom: 1em;
+	padding: 0 0.5em;
+	width: 100%;
+	padding-bottom: 50px;
+	border-bottom: 2px solid var(--background);
+}
+
+.searchBar {
+	width: 100%;
+	margin: 1em 0 0;
+	font-size: 16px;
+}
+
+#searchResults {
+/*	width: 100%;
+*/}
+
+.searchContainer {
+	display: flex;
+	justify-content: left;
+	padding: 5px 0px;
+	color: ;
+	border-bottom: 0.5px rgba(200,200,200,0.8) solid;
+}
+
+.searchLink {
+	text-align: left;
+	color: #959595;
+	text-decoration: none;
+}
+
+.searchLink:hover {
+	color:#0066CC;
+}
+
+@media screen and (min-width: 600px) {
+	.container {
+		width: 80vw;
+	}
+
+	.searchWrapper {
+		margin: 2em 0;
+	}
+}
+
+@media screen and (min-width: 900px) {
+	.container {
+		width: 70vw;
+	}
+}
+
+
+/*Style the latest news section of the FAQ page*/
+
+
+.latest-updates p, ul {
+	padding: 0em 0.5em 0em;
+}
+
+.latest-updates ul {
+	padding-left: 2em;
+}
+
+.latest-updates li {
+	margin-bottom: 1em;
+}
+
+.latest-updates li::marker {
+	color: black;
+}
+
+
+/*Style the content section of the FAQ page*/
+
+/*for toggling display*/
+.hidden {
+	display:  none;
+}
+
+/*style faq element container*/
+
+/*create space from search bar container above*/
+.faqContainer {
+	width: 100%;
+	margin: 1em 0 0;
+}
+
+/*.qaPairContainer {
+	padding-top: 60px;
+}*/
+
+.faq-question {
+	padding: 1em 0.5em;
+	border-bottom: 3px solid var(--background);
+	font-weight: bold;
+	margin-bottom: 1em;
+	border-radius: 1em 1em 0 0;
+}
+
+.faq-question:hover {
+	cursor: pointer;
+	background-color: var(--background);
+	color: white;
+}
+
+.question-clicked {
+	background-color: var(--background);
+	color: var(--light-text);
+}
+
+dt {
+	margin-bottom: 50px;
+}
+
+.answer-content {
+	margin-top: -1em;
+	padding-top: 1em;
+	border-left: 3px solid var(--background);
+	border-right: 3px solid var(--background);
+	border-bottom: 3px solid var(--background);
+	padding-left: 0.5em;
+	border-radius: 0 0 1em 1em;
+}
+
+.answer-content ul {
+	padding-top: 0em;
+}
+
+.answer-content p {
+	padding-right: 0.25em;
+}
+
+
+.answer-content p img{
+	width: 100%;
+	/*position: relative;
+	margin: 50px auto;*/
+}
+
+.answer-content li {
+	width: 95%;
+	position: relative;
+	margin: 0 auto 1em;
+}
+
+@media screen and (min-width: 600px) {
+	.answer-content {
+		padding-left: 1em;
+	}
+
+	.answer-content li {
+		width: 90%;
+	}
+}
+
+@media screen and (min-width: 900px) {
+	.answer-content {
+		padding-left: 1em;
+	}
+}
+

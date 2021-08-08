@@ -1,43 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width initial-scale=1.0">
-	<title>CFIW Map</title>
+import * as React from "react"
+// import { Link } from "gatsby"
+// import { StaticImage } from "gatsby-plugin-image"
 
-	<!-- Link to stylesheets -->
-	<link href='css/style.css' rel='stylesheet' type='text/css'/>
-	<link href='css/map-style.css' rel='stylesheet' type='text/css'/>
-	<link href='css/headerStyle.css' rel='stylesheet' type='text/css'/>
-	
-	<!--<link href='css/map-styles.css' rel='stylesheet' type='text/css'/>-->
-</head>
-<body>
-	<header>
-		<div class='logo'>
-			<img class="logo-img" src="assets/Baby-Footprint-White-PNG.png" alt="logo" height="30px">
-			<span>
-			Covid Taichung
-			</span>
-		</div>
-		<input type='checkbox' id='nav-toggle' class='nav-toggle'>
-		<nav class='nav'>
-			<ul>
-				<li><a href='index.html'>Footprints</a></li>
-				<li><a href='faq.html'>FAQ</a></li>
-				<li><a href='map.html'>Map</a></li>
-				<li><a href='guides.html'>Guides</a></li>
-				<li><a href='stats.html'>Stats</a></li>
-				<li><a href='contact.html'>Contact</a></li>
-			</ul>
-		</nav>
-		<label for='nav-toggle' class='nav-toggle-label'>
-			<span></span>
-		</label>
-	</header>
-	<main>
-		<div class="container">
-			<!-- map introduction section -->
+import Layout from "../components/layout"
+import Seo from "../components/seo"
+
+const MapPage = () => (
+  <Layout>
+    <Seo title="CFIW Map" />
+    <p>Welcome to Map</p>
+		<div className="container">
+			{/* <!-- map introduction section --> */}
 			<h1>
 				All-in-one COVID-19 map of Taichung City for English speakers
 			</h1>
@@ -81,77 +54,77 @@
 				</p>
 			</section>
 
-			<!-- map and legend section -->
+			{/* <!-- map and legend section --> */}
 			<section>
 				<table>
 					<tbody>
 						<tr>
 							<td>
-								<img src="https://i.ibb.co/Zmvh5K8/Google-Maps-open-menu-icon.png" alt="open-menu-icon" border="0">
+								<img src="https://i.ibb.co/Zmvh5K8/Google-Maps-open-menu-icon.png" alt="open-menu-icon" border="0" />
 							</td>
-							<td class="info">
+							<td className="info">
 								open menu to show/hide dates/types
 							</td>
 						</tr>
 					</tbody>
 				</table> 
 
-				<iframe class="map-container" src="https://www.google.com/maps/d/embed?mid=18X9JaUt12euUZQ9SP42RkJzksRCo7bWw&amp;ll=24.201530,120.64562&amp;z=11">
+				<iframe className="map-container" src="https://www.google.com/maps/d/embed?mid=18X9JaUt12euUZQ9SP42RkJzksRCo7bWw&amp;ll=24.201530,120.64562&amp;z=11">
 				</iframe>
-				<!-- old iframe measurements:  width="720" height="400" -->
+				{/* <!-- old iframe measurements:  width="720" height="400" --> */}
 
 				<table>
 					<tbody>
 					    <tr>
 							<td>
-								<img src="https://i.ibb.co/12DjsWm/CFIW-mint-green-health-pin.png" alt="mint-green-health-pin" border="0">
+								<img src="https://i.ibb.co/12DjsWm/CFIW-mint-green-health-pin.png" alt="mint-green-health-pin" border="0" />
 							</td>
-							<td class="info">
+							<td className="info">
 								testing/vaccination for English speakers
 							</td>
 					    </tr>
 
 					    <tr>
 							<td>
-								<img src="https://i.ibb.co/CK66g3y/CFIW-yellow-health-pin.png" alt="yellow-health-pin" border="0">
+								<img src="https://i.ibb.co/CK66g3y/CFIW-yellow-health-pin.png" alt="yellow-health-pin" border="0" />
 							</td>
-							<td class="info">
+							<td className="info">
 								testing/vaccination for Chinese speakers
 							</td>
 					    </tr>
 
 					    <tr>
 							<td>
-								<img src="https://i.ibb.co/N3tfg1D/CFIW-pink-pin-72ppi-transparent.png" alt="pink-foot-pin" border="0">
+								<img src="https://i.ibb.co/N3tfg1D/CFIW-pink-pin-72ppi-transparent.png" alt="pink-foot-pin" border="0" />
 							</td>
-							<td class="info">
+							<td className="info">
 								confirmed case footprint
 							</td>
 					    </tr>
 
 					    <tr>
 							<td>
-								<img src="https://i.ibb.co/Sv0PPNs/CFIW-purple-check-pin-72ppi-transparent.png" alt="purple-check-pin" border="0">
+								<img src="https://i.ibb.co/Sv0PPNs/CFIW-purple-check-pin-72ppi-transparent.png" alt="purple-check-pin" border="0" />
 							</td>
-							<td class="info">
+							<td className="info">
 								planned or completed disinfection
 							</td>
 					    </tr>
 
 					    <tr>
 							<td>
-								<img src="https://i.ibb.co/6H9nmGS/Google-Maps-social-share-icon.png" alt="social-share-icon" border="0">
+								<img src="https://i.ibb.co/6H9nmGS/Google-Maps-social-share-icon.png" alt="social-share-icon" border="0" />
 							</td>
-							<td class="info">
+							<td className="info">
 								share map with friends and family
 							</td>
 					    </tr>
 
 					    <tr>
 							<td>
-								<img src="https://i.ibb.co/zJ5CKkV/Google-Maps-open-full-map-icon.png" alt="open-full-map-icon" border="0">
+								<img src="https://i.ibb.co/zJ5CKkV/Google-Maps-open-full-map-icon.png" alt="open-full-map-icon" border="0" />
 							</td>
-							<td class="info">
+							<td className="info">
 								open map in new window or navigation app
 							</td>
 					    </tr>
@@ -159,10 +132,10 @@
 				</table>
 			</section>
 
-			<!-- map extra details section -->
+			{/* <!-- map extra details section --> */}
 			<section>
 				<p>
-					<strong><span class="red">
+					<strong><span className="red">
 						Important notes about the health facilities on our map:
 					</span></strong>
 				</p>
@@ -179,14 +152,14 @@
 				</ul>
 			</section>
 			
-			<!-- map user guide section -->
+			{/* <!-- map user guide section --> */}
 			<section>
 				<h2>
 					Detailed instructions for Taichung City COVID map
 				</h2>
 				
-				<!-- IMAGE GOES HERE -->
-				<p class="user-guide-image"><img src="https://www.covid-taichung.com/_files/200000020-b80a3b80a5/450/map-top-bar-options-tab.jpg"></p>
+				{/* <!-- IMAGE GOES HERE --> */}
+				<p className="user-guide-image"><img src="https://www.covid-taichung.com/_files/200000020-b80a3b80a5/450/map-top-bar-options-tab.jpg" /></p>
 				
 				<p>
 					Click the button in the <strong>top left corner</strong> of the map to open the sidebar. Now choose for which dates you want to show or hide locations. Scroll down for more options.
@@ -197,14 +170,15 @@
 				</p>
 
 
-				<!-- IMAGE GOES HERE -->
-				<p class="user-guide-image"><img src="https://www.covid-taichung.com/_files/200000019-97d3197d33/450/map-top-bar-translate-box-2.jpg"></p>
+				{/* <!-- IMAGE GOES HERE --> */}
+				<p className="user-guide-image"><img src="https://www.covid-taichung.com/_files/200000019-97d3197d33/450/map-top-bar-translate-box-2.jpg" /></p>
 
 				<p>
 					Click the button in the <strong>top right corner</strong> to open our map in a new browser window or in your Google Maps app on mobile devices. <strong>On phones you may have to switch to landscape mode to see the button</strong>.			
 				</p>
 			</section>
 		</div>
-	</main>
-</body>
-</html>
+  </Layout>
+)
+
+export default MapPage

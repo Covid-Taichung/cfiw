@@ -1,0 +1,30 @@
+
+        .pdf-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .pdf-button > a {
+            display: block;
+            color: white;
+            background-color: var(--background);
+            padding: 0.8em;
+            border-radius: 3em 1em 1em 3em;
+            text-decoration: none;
+        }
+        .pdf-button > a > div:nth-of-type(1) > svg {
+            vertical-align: middle;
+            background-color: white;
+            border: 1px solid green;
+            border-radius: 2em 1em 1em 2em;
+            padding: 0.8em;
+            height: 5em;
+            width: 5em;
+        }
+        .pdf-button > a > div {
+            display: inline-block;
+        }
+        .pdf-button > a > div:nth-of-type(2) {
+            margin-left: 0.66em;
+            text-align: center;
+        }
