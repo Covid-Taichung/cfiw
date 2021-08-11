@@ -207,6 +207,7 @@ const displayFaqContent = async () => {
 
 		//create page elements
 		/*let container = document.createElement('div');*/
+		let qaDiv = document.createElement('div');
 		let questionDiv = document.createElement('dt');
 		let answerDiv = document.createElement('dd');
 		
@@ -220,7 +221,9 @@ const displayFaqContent = async () => {
 		/*container.setAttribute('id', `${faqData[i].order}`);
 		container.classList.add('faq-box');*/
 
-		questionDiv.setAttribute('id', `question${faqData[i].id}`);
+		qaDiv.setAttribute('id', `question${faqData[i].id}`);
+		qaDiv.setAttribute('class', `qaPairContainer`);
+
 		questionDiv.setAttribute('class', 'faq-question')
 
 		answerDiv.classList.add('answer-content', 'hidden');
@@ -266,8 +269,10 @@ const displayFaqContent = async () => {
 		//append elements to the page	
 		/*container.appendChild(questionDiv);
 		container.appendChild(answerDiv);*/
-		faqContainer.appendChild(questionDiv);
-		faqContainer.appendChild(answerDiv);	
+		qaDiv.appendChild(questionDiv);
+		qaDiv.appendChild(answerDiv);	
+		faqContainer.appendChild(qaDiv);
+		// faqContainer.appendChild(answerDiv);	
 	}
 }
 
