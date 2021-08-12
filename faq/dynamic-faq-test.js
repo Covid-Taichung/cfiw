@@ -341,23 +341,7 @@ async function checkPageURL() {
 			})
 		}
 	}
-}
-
-/*
-window.location.href.indexOf('#')
-48
-let stringStarts = window.location.href.indexOf('#')
-undefined
-stringStarts
-48
-let hashMatch = window.location.href.slice(stringStarts, window.location.href.length-1);
-undefined
-hashMatch
-"#question2"
-
-*/
-	
-
+}	
 
 loadFaq()
 .then(displayFaqContent)
