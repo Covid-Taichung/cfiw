@@ -174,8 +174,8 @@ const displaySearches = function(filteredFaq) {
 			let id = a.getAttribute('href')
 			//check question IDs for match with link ID
 			for (j = 0; j < questionsArray.length; j++) {
-				console.log(`#${questionsArray[j].id}`)
-				if (id === `#${questionsArray[j].id}`) {
+				console.log(`#${questionsArray[j].parentNode.id}`)
+				if (id === `#${questionsArray[j].parentNode.id}`) {
 					questionsArray[j].classList.add('question-clicked');
 					answersArray[j].classList.remove('hidden');
 				} else {
