@@ -101,6 +101,10 @@ header li {
 	margin: 1em 0 0;
 }
 
+/*.qaPairContainer {
+	padding-top: 60px;
+}*/
+
 .faq-question {
 	padding: 1em 0.5em;
 	border-bottom: 3px solid var(--background);
