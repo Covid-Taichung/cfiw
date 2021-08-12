@@ -314,7 +314,7 @@ function toggleFaq(e) {
 		but needs more work
 	*/
 /*	e.target.scrollIntoView(true);*/
-	e.target.scrollIntoView({
+	e.target.parentNode.scrollIntoView({
 		behavior: "smooth"
 	})
 }
