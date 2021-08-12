@@ -1,4 +1,8 @@
 /*Container holds search bar, search results, and FAQ content*/
+header li {
+	font-size: 16px;
+}
+
 .container {
 	position: relative;
 	margin: 0 auto;

@@ -17,15 +17,18 @@ const disinfectionTomorrowButton = document.getElementById('disinfect-tomorrow')
 
 /* create buttons to show/hide health facility map markers */
 const healthCenterToggleButton = document.getElementById('health-center-button');
+
 /* english language and pregnancy service buttons*/
-const testEnglishButton = document.getElementById('test-english');
-const testPregnancyButton = document.getElementById('test-pregnant');
+// const testEnglishButton = document.getElementById('test-english');
+// const testPregnancyButton = document.getElementById('test-pregnant');
+
 /* covid testing service buttons */
 const testRapidButton = document.getElementById('test-rapid');
 const testPcrButton = document.getElementById('test-pcr');
+
 /* covid vaccination service buttons */
-const vacZenecaButton = document.getElementById('vac-zeneca');
-const vacModernaButton = document.getElementById('vac-moderna');
+const vaccZenecaButton = document.getElementById('vac-zeneca');
+const vaccModernaButton = document.getElementById('vac-moderna');
 
 
 /*const testHospitalToggleButton = document.getElementById('test-hospitals-button');
@@ -39,21 +42,17 @@ const vaccinationSelectors = document.getElementById('vaccination-selectors');
 //need referenece to english hospital buttons
 
 //create variables to track active/inactive state
-let footprintMarkersActive = false;
-
-let disinfectionsNeverActivated = true;
-let disinfectionControlsActive = false;
-let showYesterdaysDisinfections = false;
-let showTodaysDisinfections = true;
-let showTomorrowsDisinfections = false;
 
 
-let healthCenterMarkersActive = true;
+
+
+
+
 
 /*let testMarkersActive = true;
 let vaccinationMarkersActive = true;
 */
-let footprintMarkersInitialized = false;
+
 
 
 /* toggle functions
@@ -66,12 +65,20 @@ beyond the normal show/hide marker functions
 	functions for footprint filters
 */
 
+let footprintMarkersActive = false;
+let footprintMarkersInitialized = false;
+
 let toggleFootprints = function() {
 	if (!footprintMarkersInitialized) {
 		footprintMarkersInitialized = true;
 		initializeSlider();
 	}
 	if (!footprintMarkersActive) {
+		// this needs to be reworked
+		// each time reopened shows all markers
+		// not the selected markers
+		// change showFootprintMarkers to a conditional check
+		// using from and to variables
 		showFootprintMarkers()
 		//footprintToggleButton.innerHTML = "Hide footprints";
 		footprintMarkersActive = true;
@@ -92,6 +99,12 @@ let toggleFootprints = function() {
 /*
 	functions for disinfection location filters
 */
+
+let disinfectionsNeverActivated = true;
+let disinfectionControlsActive = false;
+let showYesterdaysDisinfections = false;
+let showTodaysDisinfections = true;
+let showTomorrowsDisinfections = false;
 
 //eventually this needs to check if yesterday/today/tomorrow are open and just re-open
 // check if disinfection markers are active
@@ -241,6 +254,15 @@ let toggleTomorrow = function() {
 	functions for health facility filters
 */
 
+let healthCenterMarkersActive = true;
+
+let showRapidTests = true;
+let showPcrTests = true;
+let showZenecaVacc = true;
+let showModernaVacc = true;
+
+
+
 let toggleHealthCenters = function() {
 	if (!healthCenterMarkersActive) {
 		showHealthCenterMarkers()
@@ -257,41 +279,50 @@ let toggleHealthCenters = function() {
 	}
 }
 
-/*let toggleTestHospitals = function() {
-	if (!testMarkersActive) {
-		showTestHospitalMarkers()
-		//testHospitalToggleButton.textContent = "Hide testing hospitals"
-		testMarkersActive = true;
-		testHospitalToggleButton.classList.add("pressed", "testing-pressed")
-		testingSelectors.style.display = 'block';
+let toggleRapidTests = function() {
+	if (!showRapidTests) {
+		showRapidTests = true;
+		testRapidButton.classList.add("pressed", "health-center-pressed");
 	} else {
-		hideTestHospitalMarkers()
-		//testHospitalToggleButton.textContent = "Show testing hospitals"
-		testMarkersActive = false;
-		testHospitalToggleButton.classList.remove("pressed", "testing-pressed")
-		testingSelectors.style.display = 'none';
+		showRapidTests = false;
+		testRapidButton.classList.remove("pressed", "health-center-pressed")
 	}
 }
 
-let toggleVaccinationHospitals = function() {
-	if (!vaccinationMarkersActive) {
-		showVaccinationHospitalMarkers()
-		vaccinationHospitalToggleButton.textContent = "Hide vaccination hospitals"
-		vaccinationMarkersActive = true;
-		vaccinationHospitalToggleButton.classList.add("pressed", "vaccination-pressed")
-		vaccinationSelectors.style.display = 'block';
+let togglePcrTests = function() {
+	if (!showPcrTests) {
+		showPcrTests = true;
+		testPcrButton.classList.add("pressed", "health-center-pressed");
 	} else {
-		hideVaccinationHospitalMarkers()
-		vaccinationHospitalToggleButton.textContent = "Show vaccination hospitals"
-		vaccinationMarkersActive = false;
-		vaccinationHospitalToggleButton.classList.remove("pressed", "vaccination-pressed")
-		vaccinationSelectors.style.display = 'none';
+		showPcrTests = false;
+		testPcrButton.classList.remove("pressed", "health-center-pressed");
 	}
-}*/
+}
 
-// create all toggle button listeners
+let toggleZenecaVacc = function() {
+	if (!showZenecaVacc) {
+		showZenecaVacc = true;
+		vaccZenecaButton.classList.add("pressed", "health-center-pressed");
+	} else {
+		showZenecaVacc = false;
+		vaccZenecaButton.classList.remove("pressed", "health-center-pressed");
+	}
+}
+
+let toggleModernaVacc = function() {
+	if (!showModernaVacc) {
+		showModernaVacc = true;
+		vaccModernaButton.classList.add("pressed", "health-center-pressed");
+	} else {
+		showModernaVacc = false;
+		vaccModernaButton.classList.remove("pressed", "health-center-pressed");
+	}
+}
+
+
+/* create all toggle button event listeners */
+
 footprintToggleButton.addEventListener('click', toggleFootprints);
-
 
 disinfectionControlsToggle.addEventListener('click', toggleDisinfectionsControls)
 disinfectionYesterdayButton.addEventListener('click', toggleYesterday)
@@ -302,36 +333,9 @@ disinfectionTomorrowButton.addEventListener('click', toggleTomorrow)
 
 healthCenterToggleButton.addEventListener('click', toggleHealthCenters)
 
-
-
-
-
-/*testEnglishButton.addListener('click', toggle)
-testPregnancyButton.addListener('click', toggle)
-testRapidButton.addListener('click', toggle)
-testPcrButton.addListener('click', toggle)
-vacZenecaButton.addListener('click', toggle)
-vacModernaButton.addListener('click', toggle)*/
-/*testHospitalToggleButton.addEventListener('click', toggleTestHospitals);
-vaccinationHospitalToggleButton.addEventListener('click', toggleVaccinationHospitals);
-*/
-
-
-/* test before depracating 
-const hideDisinfectionsButton = document.getElementById('hide-disinfections');
-const showDisinfectionsButton = document.getElementById('show-disinfections');
-const hideChineseHospitalsButton = document.getElementById('hide-chinese-hospitals');
-const showChineseHospitalsButton = document.getElementById('show-chinese-hospitals');
-const hideEnglishHopsitalsButton = document.getElementById('hide-english-hospitals');
-const showEnglishHospitalsButton = document.getElementById('show-english-hospitals');
-
-hideDisinfectionsButton.addEventListener('click', hideDisinfectionMarkers);
-showDisinfectionsButton.addEventListener('click', showDisinfectionMarkers);
-
-hideChineseHospitalsButton.addEventListener('click', hideChineseHospitalMarkers);
-showChineseHospitalsButton.addEventListener('click', showChineseHospitalMarkers);
-
-hideEnglishHopsitalsButton.addEventListener('click', hideEnglishHospitalMarkers);
-showEnglishHospitalsButton.addEventListener('click', showEnglishHospitalMarkers);
-
-*/
+// testEnglishButton.addListener('click', toggle)
+// testPregnancyButton.addListener('click', toggle)
+testRapidButton.addEventListener('click', toggleRapidTests)
+testPcrButton.addEventListener('click', togglePcrTests)
+vaccZenecaButton.addEventListener('click', toggleZenecaVacc)
+vaccModernaButton.addEventListener('click', toggleModernaVacc)
