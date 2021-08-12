@@ -317,8 +317,48 @@ function toggleFaq(e) {
 		behavior: "smooth"
 	})
 }
+
+// there was a problem using the includes method
+// because it was looking for any match containing the string or portion of
+// so I need to extract what I want
+// and check only for exactly that
+// then open the question and scroll down to the right one
+
+async function checkPageURL() {
+	console.log(window.location.href);
+	let stringStarts = window.location.href.indexOf('#');
+	console.log(stringStarts);
+	let urlMatch = window.location.href.slice(stringStarts + 1, window.location.href.length);
+	console.log(urlMatch);
+	for (i = 0; i < questionsArray.length; i++) {
+		console.log(questionsArray[i].parentNode.id);
+		if (urlMatch === questionsArray[i].parentNode.id) {
+			console.log(window.location.href)
+			answersArray[i].classList.remove('hidden');
+			questionsArray[i].classList.add('question-clicked');
+			questionsArray[i].parentNode.scrollIntoView({
+				behavior: "smooth"
+			})
+		}
+	}
+}
+
+/*
+window.location.href.indexOf('#')
+48
+let stringStarts = window.location.href.indexOf('#')
+undefined
+stringStarts
+48
+let hashMatch = window.location.href.slice(stringStarts, window.location.href.length-1);
+undefined
+hashMatch
+"#question2"
+
+*/
 	
 
 
 loadFaq()
 .then(displayFaqContent)
+.then(checkPageURL)
