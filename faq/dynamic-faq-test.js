@@ -211,15 +211,6 @@ const displayFaqContent = async () => {
 		let answerDiv = document.createElement('dd');
 		
 		//set up attributes
-		/*
-			comment out container div element to test
-			definition list within a div wrapping
-			each question/answer pair
-		*/
-
-		/*container.setAttribute('id', `${faqData[i].order}`);
-		container.classList.add('faq-box');*/
-
 		qaDiv.setAttribute('id', `question${faqData[i].id}`);
 		qaDiv.setAttribute('class', `qaPairContainer`);
 
@@ -227,25 +218,8 @@ const displayFaqContent = async () => {
 
 		answerDiv.classList.add('answer-content', 'hidden');
 		
-		/* 
-			keep next line of code for later
-		*/
 		questionDiv.innerHTML = faqData[i].question;
-
 		/*questionDiv.innerHTML = convertMarkdownToHtml(faqData, "question");*/
-
-		/*
-			commented out the <h3> format for the question
-			because I think the switch to a dl>dd>dt
-			took care of the semantic concerns
-		*/
-
-		//will test faq question h3 markdown later
-		/*if(faqData[i].formatQuestion) {
-			questionDiv.innerHTML = convertMarkdownToHtml(faqData, "question");
-		} else {
-			questionDiv.innerHTML = faqData[i].question;
-		}*/
 
 		/*set answer content and convert markdown as needed*/
 		if(faqData[i].markdownAnswer) {
@@ -306,25 +280,6 @@ function toggleFaq(e) {
 		}
 	}
 
-/*
-			if (!window.location.href.includes('#')) {
-				window.location.href += `#${questionsArray[i].parentNode.id}`;				
-			} else {
-				let hashAt = window.location.href.indexOf('#')
-				window.location.href.slice(hashAt, window.location.href.length)
-			}
-*/
-
-/*
-|| e.target === answersArray[i]) && answersArray[i].classList.contains('hidden')*/
-
-	/*
-		scroll screen to the clicked on question. 
-		https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
-		right now scrolls to top
-		but needs more work
-	*/
-/*	e.target.scrollIntoView(true);*/
 	e.target.parentNode.scrollIntoView({
 		behavior: "smooth"
 	})
@@ -341,25 +296,8 @@ function toggleFaq(e) {
 			url += `#${e.target.parentNode.id}`;
 			window.location.href = url;
 		}
-
 	}, 250);
-
-
-
-	/*if (e.target && !window.location.href.includes('#')) {
-		window.location.href += `#${questionsArray[i].parentNode.id}`;
-	} else {
-		let url = window.location.href.slice(0, window.location.href.indexOf('#'));
-		url += `#${questionsArray[i].parentNode.id}`;
-		window.location.href = url;
-	}*/
 }
-
-// there was a problem using the includes method
-// because it was looking for any match containing the string or portion of
-// so I need to extract what I want
-// and check only for exactly that
-// then open the question and scroll down to the right one
 
 async function checkPageURL() {
 	console.log(`The url is ${window.location.href}`);
