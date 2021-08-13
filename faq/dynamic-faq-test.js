@@ -169,7 +169,7 @@ const displaySearches = function(filteredFaq) {
 		div.setAttribute('class','searchContainer');
 		a.setAttribute('href', `#question${filteredFaq[i].id}`)
 		a.setAttribute('class', 'searchLink');
-		a.addEventListener('click', () => {
+		a.addEventListener('click', (e) => {
 			//create a reference to the link ID
 			let id = a.getAttribute('href')
 			//check question IDs for match with link ID
@@ -182,6 +182,23 @@ const displaySearches = function(filteredFaq) {
 					answersArray[j].classList.add('hidden');
 				}
 			}
+			console.log(e.target)
+			e.preventDefault();
+			for (i=0; i < questionsArray.length; i++) {
+				if (e.target.getAttribute('href') === `#${questionsArray[i].parentNode.id}`)
+				questionsArray[i].parentNode.scrollIntoView({
+					behavior: "smooth"
+				})
+			}
+			setTimeout(function() {
+				if (!window.location.href.includes('#')) {
+					window.location.href += `${e.target.getAttribute('href')}`;
+				} else {
+					let url = window.location.href.slice(0, window.location.href.indexOf('#'));
+					url += `${e.target.getAttribute('href')}`;
+					window.location.href = url;
+				}
+			}, 250);
 		});
 		div.appendChild(a);
 		searchResults.appendChild(div);
