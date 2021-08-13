@@ -295,13 +295,25 @@ function toggleFaq(e) {
 	//i want to close all
 	for (i=0; i < questionsArray.length; i++) {
 		if (e.target === questionsArray[i] && answersArray[i].classList.contains('hidden')) {
+			// show the answer and highlight the question
 			answersArray[i].classList.remove('hidden');
 			questionsArray[i].classList.add('question-clicked');
 		} else {
+			// remove highlights from all other questions
+			// hide all other answers
 			answersArray[i].classList.add('hidden');
 			questionsArray[i].classList.remove('question-clicked');
 		}
 	}
+
+/*
+			if (!window.location.href.includes('#')) {
+				window.location.href += `#${questionsArray[i].parentNode.id}`;				
+			} else {
+				let hashAt = window.location.href.indexOf('#')
+				window.location.href.slice(hashAt, window.location.href.length)
+			}
+*/
 
 /*
 || e.target === answersArray[i]) && answersArray[i].classList.contains('hidden')*/
@@ -316,6 +328,31 @@ function toggleFaq(e) {
 	e.target.parentNode.scrollIntoView({
 		behavior: "smooth"
 	})
+	
+	// delay the URL change to allow the scrolling animation
+	// if the URL change happens immediately
+	// the page will snap to the new URL
+	// the target destination is the same, but the look and feel is not consistent
+	setTimeout(function() {
+		if (!window.location.href.includes('#')) {
+			window.location.href += `#${e.target.parentNode.id}`;
+		} else {
+			let url = window.location.href.slice(0, window.location.href.indexOf('#'));
+			url += `#${e.target.parentNode.id}`;
+			window.location.href = url;
+		}
+
+	}, 250);
+
+
+
+	/*if (e.target && !window.location.href.includes('#')) {
+		window.location.href += `#${questionsArray[i].parentNode.id}`;
+	} else {
+		let url = window.location.href.slice(0, window.location.href.indexOf('#'));
+		url += `#${questionsArray[i].parentNode.id}`;
+		window.location.href = url;
+	}*/
 }
 
 // there was a problem using the includes method
@@ -325,11 +362,11 @@ function toggleFaq(e) {
 // then open the question and scroll down to the right one
 
 async function checkPageURL() {
-	console.log(window.location.href);
+	console.log(`The url is ${window.location.href}`);
 	let stringStarts = window.location.href.indexOf('#');
-	console.log(stringStarts);
+	console.log(`The url segment starts at ${stringStarts}`);
 	let urlMatch = window.location.href.slice(stringStarts + 1, window.location.href.length);
-	console.log(urlMatch);
+	console.log(`The urlMatch is ${urlMatch}`);
 	for (i = 0; i < questionsArray.length; i++) {
 		console.log(questionsArray[i].parentNode.id);
 		if (urlMatch === questionsArray[i].parentNode.id) {
