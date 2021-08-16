@@ -279,6 +279,9 @@ function addHealthCenterMarker(healthCenterData) {
 		});
 	}
 
+	//add dataID to each marker
+	healthCenterMarker.dataID = i + 1;
+
 	healthCenterInfoWindows.push(infoWindow);
 
 	//push new markers into the disinfection markers array	
