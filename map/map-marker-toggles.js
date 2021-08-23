@@ -300,69 +300,73 @@ function showFilteredHealthFacilities() {
 	rapidAntigenTestMarkers = [];
 	pcrTestMarkers = [];
 	
+	// check for locations with astra zeneca vaccine
 	if (showZenecaVacc) {
 		for (i = 0; i < healthCenterData.length; i++) {
 			if (healthCenterData[i].azCheckin !== "" || 
 				healthCenterData[i].azLanguage !== "" ||
 				healthCenterData[i].azLocation !== ""
 			) {
-				console.log(`We found a zeneca at ${i}`)
+				// console.log(`We found a zeneca at ${i}`)
 				zenecaVaccineMarkers.push(healthCenterMarkers[i]);
 			} else {
-				console.log(`No match at ${i}`)
+				// console.log(`No match at ${i}`)
 			}
 		}
-		console.log(zenecaVaccineMarkers);
-		zenecaVaccineMarkers.forEach((marker) => {marker.setMap(map)});
+		// console.log(zenecaVaccineMarkers);
+		// zenecaVaccineMarkers.forEach((marker) => {marker.setMap(map)});
 	}
 
+	// check for locations with moderna vaccine
 	if (showModernaVacc) {
 		for (i = 0; i < healthCenterData.length; i++) {
 			if (healthCenterData[i].modernaCheckin !== "" || 
 				healthCenterData[i].modernaLanguage !== "" ||
 				healthCenterData[i].modernaLocation !== ""
 			) {
-				console.log(`We found a moderna spot at ${i}`)
+				// console.log(`We found a moderna spot at ${i}`)
 				modernaVaccineMarkers.push(healthCenterMarkers[i]);
 			} else {
-				console.log(`No match at ${i}`)
+				// console.log(`No match at ${i}`)
 			}
 		}
-		console.log(modernaVaccineMarkers);
-		modernaVaccineMarkers.forEach((marker) => {marker.setMap(map)});
+		// console.log(modernaVaccineMarkers);
+		// modernaVaccineMarkers.forEach((marker) => {marker.setMap(map)});
 	}
 
+	// check for locations with rapid testing
 	if (showRapidTests) {
 		for (i = 0; i < healthCenterData.length; i++) {
 			if (healthCenterData[i].raCheckin !== "" || 
 				healthCenterData[i].raLanguage !== "" ||
 				healthCenterData[i].raLocation !== ""
 			) {
-				console.log(`We found a rapid antigen spot at ${i}`);
+				// console.log(`We found a rapid antigen spot at ${i}`);
 				rapidAntigenTestMarkers.push(healthCenterMarkers[i]);
 			} else {
-				console.log(`No match at ${i}`);
+				// console.log(`No match at ${i}`);
 			}
 		}
 		// need to set markers on map now
-		console.log(rapidAntigenTestMarkers);
-		rapidAntigenTestMarkers.forEach((marker) => {marker.setMap(map)});
+		// console.log(rapidAntigenTestMarkers);
+		// rapidAntigenTestMarkers.forEach((marker) => {marker.setMap(map)});
 	}
 
+	// check for locations with pcr testing
 	if (showPcrTests) {
 		for (i = 0; i < healthCenterData.length; i++) {
 			if (healthCenterData[i].pcrCheckin !== "" || 
 				healthCenterData[i].pcrLanguage !== "" ||
 				healthCenterData[i].pcrLocation !== ""
 			) {
-				console.log(`We found a pcr test spot at ${i}`);
+				// console.log(`We found a pcr test spot at ${i}`);
 				pcrTestMarkers.push(healthCenterMarkers[i]);
 			} else {
-				console.log(`No match at ${i}`);
+				// console.log(`No match at ${i}`);
 			}
 		}
-		console.log(pcrTestMarkers);
-		pcrTestMarkers.forEach((marker) => {marker.setMap(map)});
+		// console.log(pcrTestMarkers);
+		// pcrTestMarkers.forEach((marker) => {marker.setMap(map)});
 	}
 
 	// concatenate all arrays
@@ -373,21 +377,40 @@ function showFilteredHealthFacilities() {
 		.concat(rapidAntigenTestMarkers)
 	);
 
-	console.log("Your concatenated array is:")
-	console.log(concatMapMarkers);
+	// console.log("Your concatenated array is:")
+	// console.log(concatMapMarkers);
 
-	// filter repeat values
+	function sortMarkersByDataID( a, b ) {
+	  if ( a.dataID > b.dataID ){
+	    return 1;
+	  }
+	  if ( a.dataID < b.dataID ){
+	    return -1;
+	  }
+	  return 0;
+	}
 
-	// let filteredMapMarkers = [];
+	// sort numerically so repeat IDs can be checked and removed
+	const sortedMapMarkers = concatMapMarkers.sort(sortMarkersByDataID);
+	// console.log("Your sorted map markers array is:")
+	// console.log(sortedMapMarkers);
 
-	// filteredMapMarkers = concatMapMarkers.filter((marker) => {
-	// 	if (!filteredMapMarkers.includes(marker.dataID)){
-	// 		console.log(marker.dataID)
-	// 		return marker.dataID
-	// 	}
-	// });
-	// console.log("Your filtered array is:")
-	// console.log(filteredMapMarkers);
+	// filter out repeat values
+	const filteredMapMarkers = sortedMapMarkers.filter((marker, i) => {
+		// console.log(marker.dataID)
+		if (i === 0) {
+			return true; 
+		} 
+
+		else if (sortedMapMarkers[i].dataID !== sortedMapMarkers[i-1].dataID) {
+			return true;
+		}
+
+		});
+
+	// console.log("Your filtered map markers array is:")
+	// console.log(filteredMapMarkers)
+	filteredMapMarkers.forEach((marker) => {marker.setMap(map)});
 }
 
 // function to set Rapid Test locations show/hide

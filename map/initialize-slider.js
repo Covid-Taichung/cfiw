@@ -12,7 +12,21 @@
         let sliderFrom;
         let sliderTo;
         let sliderTags;
-        
+
+        // I need to split up the dates in the dates array
+        // and change them to word form
+        // it will be easiest from the sliderDatesArray
+        // don't mutate your data
+        // use: 
+        // footprintData[3].date.split('-');
+        // maybe you can remember the year and dash from the strings first.
+        // so take out "2021-" and you're only left with the month and day
+        // "05-08"
+        // this can be turned into an array
+        // ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+        // newDatesArray = sliderDatesArray.map(element => element.replace('2021-',''));
+        // let newDatesArraySplit = newDatesArray.map(element => element.split('-'));
+
         function initializeSlider() {
 
             let initalizer = 0;
@@ -39,7 +53,7 @@
                 to: sliderDatesArray.length-1,
                 //from: my_from,
                 //to: my_to,
-                values: sliderDatesArray,
+                values: sliderDatesValues,
                 onStart: updateInputs,
                 onChange: updateInputs,
                 hide_min_max: true

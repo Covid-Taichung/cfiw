@@ -103,7 +103,11 @@ function initMap() {
 		// showMarkers(disinfectionData, testHospitalData, vaccinationHospitalData);
 		/*showTestHospitalMarkers()
 		showVaccinationHospitalMarkers()*/
-		showHealthCenterMarkers()
+
+		// I removed this because there are some health centers
+		// that don't fit any of the filters
+		// showHealthCenterMarkers()
+		showFilteredHealthFacilities()
 		
 		changeMarkerIcons();
 	})
@@ -456,6 +460,10 @@ function hideVaccinationHospitalMarkers() {
 /* slider functions here */
 //create variable to hold footprint dates for slider
 let sliderDatesArray = [];
+let newDatesArray = [];
+let newDatesArraySplit = [];
+let theMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+let sliderDatesValues = [];
 
 function createSliderDatesArray(footprintData) {
 	//make slider dates array
@@ -466,7 +474,21 @@ function createSliderDatesArray(footprintData) {
 	    sliderDatesArray.push(footprintData[i].date);
 	  } 
 	} 
+	newDatesArray = sliderDatesArray.map(element => element.replace('2021-',''));
+	newDatesArraySplit = newDatesArray.map(element => element.split('-'));
+	newDatesArraySplit.forEach(function(element){
+	   element[0] = Number(element[0]);
+	});
+	newDatesArraySplit.forEach(function(element) {
+	   element[0] = theMonths[element[0]-1];
+	});
+	sliderDatesValues = newDatesArraySplit.map(function(element) {
+	    element = element[0] + ' ' + element[1];
+	    return element;
+	});
+
 }
+
 //go through the slider dates array
 //and then for each one, go through the markers array
 //if the sliderDatesArray.inclues(marker[j].date)
