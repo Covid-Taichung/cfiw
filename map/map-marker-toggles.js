@@ -279,10 +279,10 @@ let toggleHealthCenters = function() {
 	}
 }
 
-let zenecaVaccineMarkers = [];
-let modernaVaccineMarkers = [];
-let rapidAntigenTestMarkers = [];
-let pcrTestMarkers = [];
+// let zenecaVaccineMarkers = [];
+// let modernaVaccineMarkers = [];
+// let rapidAntigenTestMarkers = [];
+// let pcrTestMarkers = [];
 
 function showFilteredHealthFacilities() {
 	// this function needs to go through
@@ -295,10 +295,10 @@ function showFilteredHealthFacilities() {
 	// azLocation
 
 	// clear all old arrays from previous function
-	zenecaVaccineMarkers = [];
-	modernaVaccineMarkers = [];
-	rapidAntigenTestMarkers = [];
-	pcrTestMarkers = [];
+	let zenecaVaccineMarkers = [];
+	let modernaVaccineMarkers = [];
+	let rapidAntigenTestMarkers = [];
+	let pcrTestMarkers = [];
 	
 	// check for locations with astra zeneca vaccine
 	if (showZenecaVacc) {
@@ -335,7 +335,7 @@ function showFilteredHealthFacilities() {
 		// modernaVaccineMarkers.forEach((marker) => {marker.setMap(map)});
 	} 
 
-	
+
 	// check for locations with rapid testing
 	if (showRapidTests) {
 		for (i = 0; i < healthCenterData.length; i++) {
@@ -413,6 +413,11 @@ function showFilteredHealthFacilities() {
 	// console.log("Your filtered map markers array is:")
 	// console.log(filteredMapMarkers)
 	filteredMapMarkers.forEach((marker) => {marker.setMap(map)});
+	for (i = 0; i < healthCenterMarkers.length; i++) {
+		if (!filteredMapMarkers.includes(healthCenterMarkers[i])) {
+			healthCenterMarkers[i].setMap(null)
+		}
+	}
 }
 
 // function to set Rapid Test locations show/hide
@@ -423,7 +428,7 @@ let toggleRapidTests = function() {
 	} else {
 		showRapidTests = false;
 		testRapidButton.classList.remove("pressed", "health-center-pressed")
-		rapidAntigenTestMarkers.forEach((marker) => {marker.setMap(null)});
+		// rapidAntigenTestMarkers.forEach((marker) => {marker.setMap(null)});
 	}
 	showFilteredHealthFacilities();
 }
@@ -436,7 +441,7 @@ let togglePcrTests = function() {
 	} else {
 		showPcrTests = false;
 		testPcrButton.classList.remove("pressed", "health-center-pressed");
-		pcrTestMarkers.forEach((marker) => {marker.setMap(null)});
+		// pcrTestMarkers.forEach((marker) => {marker.setMap(null)});
 
 	}
 	showFilteredHealthFacilities();
@@ -450,7 +455,7 @@ let toggleZenecaVacc = function() {
 	} else {
 		showZenecaVacc = false;
 		vaccZenecaButton.classList.remove("pressed", "health-center-pressed");
-		zenecaVaccineMarkers.forEach((marker) => {marker.setMap(null)});
+		// zenecaVaccineMarkers.forEach((marker) => {marker.setMap(null)});
 	}
 	showFilteredHealthFacilities();
 }
@@ -463,7 +468,7 @@ let toggleModernaVacc = function() {
 	} else {
 		showModernaVacc = false;
 		vaccModernaButton.classList.remove("pressed", "health-center-pressed");
-		modernaVaccineMarkers.forEach((marker) => {marker.setMap(null)});
+		// modernaVaccineMarkers.forEach((marker) => {marker.setMap(null)});
 	}
 	showFilteredHealthFacilities();
 }

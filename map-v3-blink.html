@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width initial-scale=1.0">
+	<title>CFIW Map</title>
+
+	<!-- Link to stylesheets -->
+	<link href='css/style.css' rel='stylesheet' type='text/css'/>
+	<link href='css/map-v3-style.css' rel='stylesheet' type='text/css'/>
+	<link href='css/headerStyle.css' rel='stylesheet' type='text/css'/>
+	<link rel="stylesheet" type="text/css" href="css/ion.rangeSlider.min.css">
+	
+	
+    <!-- Link to scripts -->
+    
+    <!--jQuery-->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    <!--ion Range Slider Plugin JavaScript file-->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
+    
+    <!-- Script with fetch data functions -->
+    <script async src="map/map-fetch-scripts.js"></script>
+</head>
+<body>
+	<header>
+		<div class='logo'>
+			<img class="logo-img" src="assets/Baby-Footprint-White-PNG.png" alt="logo" height="30px">
+			<span>
+			Covid Taichung
+			</span>
+		</div>
+		<input type='checkbox' id='nav-toggle' class='nav-toggle'>
+		<nav class='nav'>
+			<ul>
+				<li><a href='index.html'>Footprints</a></li>
+				<li><a href='faq.html'>FAQ</a></li>
+				<li><a href='map.html'>Map</a></li>
+				<li><a href='guides.html'>Guides</a></li>
+				<li><a href='stats.html'>Stats</a></li>
+				<li><a href='contact.html'>Contact</a></li>
+			</ul>
+		</nav>
+		<label for='nav-toggle' class='nav-toggle-label'>
+			<span></span>
+		</label>
+	</header>
+	<main>
+		<h1>
+			All-in-one COVID-19 map of Taichung City for English speakers
+		</h1>
+		<h2 id="page-header">
+			What do you want to see?
+		</h2>
+		<div class="controls-container">
+			<div class="hide-show-controls">
+				<button id="footprint-button" class="footprint-button control-button">Footprints</button>
+				<button id="disinfection-button" class="disinfection-button control-button">Disinfections</button>
+				<button id="health-center-button" class="health-center-button control-button pressed health-center-pressed">Health Facilities</button>
+				<!-- <button id="vaccination-hospitals-button" class="control-button pressed vaccination-pressed">Hide Vaccination Hospitals</button> -->
+			</div>
+			<!-- <div id="footprint-controls-container" class="container">
+				<div class="category-container">
+					<label class="control-label"> <img src="https://i.ibb.co/N3tfg1D/CFIW-pink-pin-72ppi-transparent.png" class="inline-legend">Footprint locations</label>
+					<div class="hide-show-controls">
+						
+					</div>
+				</div>
+			</div> -->
+			<div id="selectors-container">
+				<div id="footprint-selectors" class="category-container hidden">
+					<div class="range-slider">
+					<input type="text" class="js-range-slider" value="" />
+					</div>
+					<!-- <div class="extra-controls">
+						<input type="text" class="js-input-from js-input" value="0" />
+						<input type="text" class="js-input-to js-input" value="0" />
+					</div> -->
+				</div>
+				<div id="disinfection-selectors" class="category-container hidden">
+					<!-- <label class="control-label"><img src="https://i.ibb.co/Sv0PPNs/CFIW-purple-check-pin-72ppi-transparent.png" class="inline-legend"> Disinfection Locations
+					</label> -->
+					<div>
+						<!-- <button id="disinfect-all" class="disinfection-button">All</button> -->
+						<button id="disinfect-yesterday" class="disinfection-button">Yesterday</button>
+						<button id="disinfect-today" class="disinfection-button">Today</button>
+						<button id="disinfect-tomorrow" class="disinfection-button">Tomorrow</button>
+					</div>
+				</div>
+				<div id="health-center-selectors" class="category-container">
+					<div>
+						<!-- <button id="test-english" class="health-center-button">English</button>
+						<button id="test-pregnant" class="health-center-button">Pregnancy</button> -->
+						<button id="test-rapid" class="health-center-button health-center-pressed">
+							Rapid Test
+						</button>
+						<button id="test-pcr" class="health-center-button health-center-pressed">
+							PCR Test
+						</button>
+						<button id="vac-zeneca"class="health-center-button health-center-pressed">
+							Astra Zeneca
+						</button>
+						<button id="vac-moderna"class="health-center-button health-center-pressed">
+							Moderna
+						</button>
+					</div>
+				</div>
+				<!-- <div id="vaccination-selectors" class="category-container">
+				</div> -->
+				<!--<div class="category-container">
+					<label class="other-control-label">Vaccination Stations</label>
+					<div class="hide-show-controls">
+						<button id="hide-vaccination-stations" class="hide-show-button">Hide</button>
+						<button id="show-vaccination-stations" class="hide-show-button">Show</button>
+					</div>
+				</div>-->
+			</div>
+		</div>
+		<div id="map"></div>
+	</main>
+
+	<script src="map/initialize-slider.js"></script>
+	<script src="map/map-functions.js"></script>
+	<script src="map/map-marker-toggles-blink.js"></script>
+	<script 
+	    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqOe9fM_PP7kzC-cqh9IiMogQKRlNFYWQ&callback=initMap">
+	</script>
+</body>
+</html>
+
