@@ -411,7 +411,7 @@ function showFilteredHealthFacilities() {
 		});
 
 	// console.log("Your filtered map markers array is:")
-	// console.log(filteredMapMarkers)
+	console.log(filteredMapMarkers)
 	filteredMapMarkers.forEach((marker) => {marker.setMap(map)});
 	for (i = 0; i < healthCenterMarkers.length; i++) {
 		if (!filteredMapMarkers.includes(healthCenterMarkers[i])) {
