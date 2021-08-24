@@ -315,7 +315,8 @@ function showFilteredHealthFacilities() {
 		}
 		// console.log(zenecaVaccineMarkers);
 		// zenecaVaccineMarkers.forEach((marker) => {marker.setMap(map)});
-	}
+	} 
+
 
 	// check for locations with moderna vaccine
 	if (showModernaVacc) {
@@ -332,8 +333,9 @@ function showFilteredHealthFacilities() {
 		}
 		// console.log(modernaVaccineMarkers);
 		// modernaVaccineMarkers.forEach((marker) => {marker.setMap(map)});
-	}
+	} 
 
+	
 	// check for locations with rapid testing
 	if (showRapidTests) {
 		for (i = 0; i < healthCenterData.length; i++) {
