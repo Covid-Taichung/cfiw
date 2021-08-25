@@ -45,14 +45,15 @@ var healthCenterInfoWindows = [];
 let map;
 
 
-function initMap() {
+
+async function initMap() {
 	//we need to define the options
 	//doing that in a variable is good
 	//we call load footprints right away
 	//because we need that data for our markers
 	//we use then to wait for fetch to finish
 	//before we move on with initializing the map
-	loadFootprints()
+	await loadFootprints()
 	.then(loadDisinfections)
 	//.then(loadChineseHospitals)
 	//.then(loadEnglishHospitals)
@@ -465,7 +466,7 @@ let newDatesArraySplit = [];
 let theMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 let sliderDatesValues = [];
 
-function createSliderDatesArray(footprintData) {
+async function createSliderDatesArray(footprintData) {
 	//make slider dates array
 	for (i = 0; i < footprintData.length; i++) {
 	  if (i === 0) {
