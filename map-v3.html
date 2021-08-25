@@ -118,13 +118,20 @@
 			</div>
 		</div>
 		<div id="map"></div>
+		<!-- &callback=initMap -->
 	</main>
 
 	<script src="map/initialize-slider.js"></script>
 	<script src="map/map-functions.js"></script>
 	<script src="map/map-marker-toggles.js"></script>
 	<script 
-	    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqOe9fM_PP7kzC-cqh9IiMogQKRlNFYWQ&callback=initMap">
+	    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqOe9fM_PP7kzC-cqh9IiMogQKRlNFYWQ">
+	</script>
+	<script>
+		loadFootprints()
+		.then(loadDisinfections)
+		.then(loadHealthCenters)
+		.then(initMap)
 	</script>
 </body>
 </html>
