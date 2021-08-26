@@ -169,7 +169,7 @@ const displaySearches = function(filteredFaq) {
 		div.setAttribute('class','searchContainer');
 		a.setAttribute('href', `#question${filteredFaq[i].id}`)
 		a.setAttribute('class', 'searchLink');
-		a.addEventListener('click', () => {
+		a.addEventListener('click', (e) => {
 			//create a reference to the link ID
 			let id = a.getAttribute('href')
 			//check question IDs for match with link ID
@@ -182,6 +182,23 @@ const displaySearches = function(filteredFaq) {
 					answersArray[j].classList.add('hidden');
 				}
 			}
+			console.log(e.target)
+			e.preventDefault();
+			for (i=0; i < questionsArray.length; i++) {
+				if (e.target.getAttribute('href') === `#${questionsArray[i].parentNode.id}`)
+				questionsArray[i].parentNode.scrollIntoView({
+					behavior: "smooth"
+				})
+			}
+			setTimeout(function() {
+				if (!window.location.href.includes('#')) {
+					window.location.href += `${e.target.getAttribute('href')}`;
+				} else {
+					let url = window.location.href.slice(0, window.location.href.indexOf('#'));
+					url += `${e.target.getAttribute('href')}`;
+					window.location.href = url;
+				}
+			}, 250);
 		});
 		div.appendChild(a);
 		searchResults.appendChild(div);
@@ -211,15 +228,6 @@ const displayFaqContent = async () => {
 		let answerDiv = document.createElement('dd');
 		
 		//set up attributes
-		/*
-			comment out container div element to test
-			definition list within a div wrapping
-			each question/answer pair
-		*/
-
-		/*container.setAttribute('id', `${faqData[i].order}`);
-		container.classList.add('faq-box');*/
-
 		qaDiv.setAttribute('id', `question${faqData[i].id}`);
 		qaDiv.setAttribute('class', `qaPairContainer`);
 
@@ -227,25 +235,8 @@ const displayFaqContent = async () => {
 
 		answerDiv.classList.add('answer-content', 'hidden');
 		
-		/* 
-			keep next line of code for later
-		*/
 		questionDiv.innerHTML = faqData[i].question;
-
 		/*questionDiv.innerHTML = convertMarkdownToHtml(faqData, "question");*/
-
-		/*
-			commented out the <h3> format for the question
-			because I think the switch to a dl>dd>dt
-			took care of the semantic concerns
-		*/
-
-		//will test faq question h3 markdown later
-		/*if(faqData[i].formatQuestion) {
-			questionDiv.innerHTML = convertMarkdownToHtml(faqData, "question");
-		} else {
-			questionDiv.innerHTML = faqData[i].question;
-		}*/
 
 		/*set answer content and convert markdown as needed*/
 		if(faqData[i].markdownAnswer) {
@@ -295,41 +286,42 @@ function toggleFaq(e) {
 	//i want to close all
 	for (i=0; i < questionsArray.length; i++) {
 		if (e.target === questionsArray[i] && answersArray[i].classList.contains('hidden')) {
+			// show the answer and highlight the question
 			answersArray[i].classList.remove('hidden');
 			questionsArray[i].classList.add('question-clicked');
 		} else {
+			// remove highlights from all other questions
+			// hide all other answers
 			answersArray[i].classList.add('hidden');
 			questionsArray[i].classList.remove('question-clicked');
 		}
 	}
 
-/*
-|| e.target === answersArray[i]) && answersArray[i].classList.contains('hidden')*/
-
-	/*
-		scroll screen to the clicked on question. 
-		https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
-		right now scrolls to top
-		but needs more work
-	*/
-/*	e.target.scrollIntoView(true);*/
 	e.target.parentNode.scrollIntoView({
 		behavior: "smooth"
 	})
+	
+	// delay the URL change to allow the scrolling animation
+	// if the URL change happens immediately
+	// the page will snap to the new URL
+	// the target destination is the same, but the look and feel is not consistent
+	setTimeout(function() {
+		if (!window.location.href.includes('#')) {
+			window.location.href += `#${e.target.parentNode.id}`;
+		} else {
+			let url = window.location.href.slice(0, window.location.href.indexOf('#'));
+			url += `#${e.target.parentNode.id}`;
+			window.location.href = url;
+		}
+	}, 250);
 }
 
-// there was a problem using the includes method
-// because it was looking for any match containing the string or portion of
-// so I need to extract what I want
-// and check only for exactly that
-// then open the question and scroll down to the right one
-
 async function checkPageURL() {
-	console.log(window.location.href);
+	console.log(`The url is ${window.location.href}`);
 	let stringStarts = window.location.href.indexOf('#');
-	console.log(stringStarts);
+	console.log(`The url segment starts at ${stringStarts}`);
 	let urlMatch = window.location.href.slice(stringStarts + 1, window.location.href.length);
-	console.log(urlMatch);
+	console.log(`The urlMatch is ${urlMatch}`);
 	for (i = 0; i < questionsArray.length; i++) {
 		console.log(questionsArray[i].parentNode.id);
 		if (urlMatch === questionsArray[i].parentNode.id) {
