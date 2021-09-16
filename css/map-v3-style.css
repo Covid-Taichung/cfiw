@@ -38,35 +38,12 @@ h2 {
 	background-color: #1de9b6;
 }
 
-/*Style footprints buttons*/
-
-#footprint-button {
-	/*color: var(--dark-text);
-	background-color: rgb(34,34,34);*/
-}
-
-.footprint-button:hover {
-	cursor:  pointer;
-	color: var(--background);
-	background-color: #ff4081;
-}
+/* add button "pushed" on click with :active */
 
 .footprint-button:active {
 	cursor:  pointer;
 	color: black;
 	background-color: #E2326D;
-}
-
-/*Style disinfection buttons*/
-
-#disinfection-button {
-	
-}
-
-.disinfection-button:hover {
-	cursor:  pointer;
-	color: var(--background);
-	background-color:  #6242ff;
 }
 
 .disinfection-button:active {
@@ -75,50 +52,51 @@ h2 {
 	background-color:  #5238D2;
 }
 
-/*#test-hospitals-button {
-	
-}
-
-#test-hospitals-button:hover{
-	cursor:  pointer;
-	color: var(--background);
-	background-color: #ffe94b;
-}
-
-#test-hospitals-button:active {
-	cursor:  pointer;
-	color: black;
-	background-color: #D7C73D;
-}
-
-#vaccination-hospitals-button {
-	
-}
-
-#vaccination-hospitals-button:hover {
-	cursor:  pointer;
-	color: var(--background);
-	background-color: #1de9b6;
-}
-
-#vaccination-hospitals-button:active {
-	cursor:  pointer;
-	color: black;
-	background-color: #1CD0A6;
-}*/
-
-/*Style health center buttons*/
-
-.health-center-button:hover {
-	cursor:  pointer;
-	color: var(--background);
-	background-color: #1de9b6;
-}
-
 .health-center-button:active {
 	cursor:  pointer;
 	color: black;
 	background-color: #1CD0A6;
+}
+
+/* detect if devices all hover with hover: hover */
+
+@media (hover: hover) {
+
+	.footprint-button:hover {
+		cursor:  pointer;
+		color: var(--background);
+		background-color: #ff4081;
+	}
+
+	.disinfection-button:hover {
+		cursor:  pointer;
+		color: var(--background);
+		background-color:  #6242ff;
+	}
+
+	.health-center-button:hover {
+		cursor:  pointer;
+		color: var(--background);
+		background-color: #1de9b6;
+	}
+
+	.footprint-button:active {
+		cursor:  pointer;
+		color: black;
+		background-color: #E2326D;
+	}
+
+	.disinfection-button:active {
+		cursor:  pointer;
+		color: black;
+		background-color:  #5238D2;
+	}
+
+	.health-center-button:active {
+		cursor:  pointer;
+		color: black;
+		background-color: #1CD0A6;
+	}
 }
 
 /*Map filter selectors*/

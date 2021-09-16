@@ -45,68 +45,65 @@ var healthCenterInfoWindows = [];
 let map;
 
 
-function initMap() {
+
+async function initMap() {
 	//we need to define the options
 	//doing that in a variable is good
 	//we call load footprints right away
 	//because we need that data for our markers
 	//we use then to wait for fetch to finish
 	//before we move on with initializing the map
-	loadFootprints()
-	.then(loadDisinfections)
-	//.then(loadChineseHospitals)
-	//.then(loadEnglishHospitals)
-	.then(loadHealthCenters)
-	/*.then(loadTestHospitals)
-	.then(loadVaccinationHospitals)*/
-	.then(() => {
-		var options = {
-			zoom: 10,
-			center: {lat:24.1477, lng: 120.6736},
-			//mapTypeControl: false,
-			disableDefaultUI: true,
-		};
+	
+	var options = {
+		zoom: 10,
+		center: {lat:24.1477, lng: 120.6736},
+		//mapTypeControl: false,
+		disableDefaultUI: true,
+	};
 
-		//here we create the actual map 
-		//with reference to the DOM ID
-		map = new google.maps.Map(document.getElementById('map'), options);
+	//here we create the actual map 
+	//with reference to the DOM ID
+	map = new google.maps.Map(document.getElementById('map'), options);
 
-		/* SECTION TO CALL ADDMARKER FUNCTIONS */
-		//make loop to initialize disinfection markers
-		//loop to add footprint markers. this loop is not visible on load
-		for (i = 0; i < footprintData.length; i++) {
-			addFootprintMarker(footprintData[i]);
-		}
+	/* SECTION TO CALL ADDMARKER FUNCTIONS */
+	//make loop to initialize disinfection markers
+	//loop to add footprint markers. this loop is not visible on load
+	for (i = 0; i < footprintData.length; i++) {
+		addFootprintMarker(footprintData[i]);
+	}
 
-		for (i = 0; i < disinfectionData.length; i++) {
-			addDisinfectionMarker(disinfectionData[i]);
-		}
+	for (i = 0; i < disinfectionData.length; i++) {
+		addDisinfectionMarker(disinfectionData[i]);
+	}
 
-		for (i = 0; i < healthCenterData.length; i++) {
-			addHealthCenterMarker(healthCenterData[i]);
-		}
+	for (i = 0; i < healthCenterData.length; i++) {
+		addHealthCenterMarker(healthCenterData[i]);
+	}
 
-		//make health center loop : healthCenterData
+	//make health center loop : healthCenterData
 
-		/*//make loop to initialize testing hospital markers
-		for (i = 0; i < testHospitalData.length; i++) {
-			addTestHospitalMarker(testHospitalData[i]);
-		}
+	/*//make loop to initialize testing hospital markers
+	for (i = 0; i < testHospitalData.length; i++) {
+		addTestHospitalMarker(testHospitalData[i]);
+	}
 
-		//make loop to initialize vaccination hospital markers
-		for (i = 0; i < vaccinationHospitalData.length; i++) {
-			addVaccinationHospitalMarker(vaccinationHospitalData[i]);
-		}
+	//make loop to initialize vaccination hospital markers
+	for (i = 0; i < vaccinationHospitalData.length; i++) {
+		addVaccinationHospitalMarker(vaccinationHospitalData[i]);
+	}
 */
-		//show all markers
-		//footprint data not included because it is found in showSliderMarkers function
-		// showMarkers(disinfectionData, testHospitalData, vaccinationHospitalData);
-		/*showTestHospitalMarkers()
-		showVaccinationHospitalMarkers()*/
-		showHealthCenterMarkers()
-		
-		changeMarkerIcons();
-	})
+	//show all markers
+	//footprint data not included because it is found in showSliderMarkers function
+	// showMarkers(disinfectionData, testHospitalData, vaccinationHospitalData);
+	/*showTestHospitalMarkers()
+	showVaccinationHospitalMarkers()*/
+
+	// I removed this because there are some health centers
+	// that don't fit any of the filters
+	// showHealthCenterMarkers()
+	showFilteredHealthFacilities()
+	
+	changeMarkerIcons();
 	/*.then(() => {
 		initializeSlider();
 	})*/
@@ -278,6 +275,9 @@ function addHealthCenterMarker(healthCenterData) {
 			}
 		});
 	}
+
+	//add dataID to each marker
+	healthCenterMarker.dataID = i + 1;
 
 	healthCenterInfoWindows.push(infoWindow);
 
@@ -453,8 +453,12 @@ function hideVaccinationHospitalMarkers() {
 /* slider functions here */
 //create variable to hold footprint dates for slider
 let sliderDatesArray = [];
+let newDatesArray = [];
+let newDatesArraySplit = [];
+let theMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+let sliderDatesValues = [];
 
-function createSliderDatesArray(footprintData) {
+async function createSliderDatesArray(footprintData) {
 	//make slider dates array
 	for (i = 0; i < footprintData.length; i++) {
 	  if (i === 0) {
@@ -463,7 +467,21 @@ function createSliderDatesArray(footprintData) {
 	    sliderDatesArray.push(footprintData[i].date);
 	  } 
 	} 
+	newDatesArray = sliderDatesArray.map(element => element.replace('2021-',''));
+	newDatesArraySplit = newDatesArray.map(element => element.split('-'));
+	newDatesArraySplit.forEach(function(element){
+	   element[0] = Number(element[0]);
+	});
+	newDatesArraySplit.forEach(function(element) {
+	   element[0] = theMonths[element[0]-1];
+	});
+	sliderDatesValues = newDatesArraySplit.map(function(element) {
+	    element = element[0] + ' ' + element[1];
+	    return element;
+	});
+
 }
+
 //go through the slider dates array
 //and then for each one, go through the markers array
 //if the sliderDatesArray.inclues(marker[j].date)
